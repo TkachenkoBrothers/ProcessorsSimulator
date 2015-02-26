@@ -259,14 +259,14 @@ namespace ProcessorsSimulator
         }
         private void BlinkWhenTaskSended(object sender, EventArgs e)
         {
-            this.pictureBoxManagerIndicator.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pictureBoxManagerIndicator.BackColor = System.Drawing.Color.Gold;
             Application.DoEvents();
             Thread.Sleep(100);
             this.pictureBoxManagerIndicator.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
         }
         private void BlinkWhenNewTaskGenerated(Task task)
         {
-            this.pictureBoxGeneratorIndicator.BackColor = System.Drawing.SystemColors.Highlight;
+            this.pictureBoxGeneratorIndicator.BackColor = System.Drawing.Color.Gold;
             Application.DoEvents();
             Thread.Sleep(100);
             this.pictureBoxGeneratorIndicator.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;

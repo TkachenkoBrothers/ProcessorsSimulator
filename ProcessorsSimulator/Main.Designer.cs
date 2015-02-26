@@ -263,7 +263,7 @@
             // 
             this.richTextBoxManagerQueue.BackColor = System.Drawing.SystemColors.HotTrack;
             this.richTextBoxManagerQueue.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.richTextBoxManagerQueue.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.richTextBoxManagerQueue.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBoxManagerQueue.ForeColor = System.Drawing.SystemColors.Info;
             this.richTextBoxManagerQueue.Location = new System.Drawing.Point(500, 51);
             this.richTextBoxManagerQueue.Name = "richTextBoxManagerQueue";
@@ -368,10 +368,13 @@
             // 
             // textBoxProcessorCondition1
             // 
+            this.textBoxProcessorCondition1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.textBoxProcessorCondition1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxProcessorCondition1.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCondition1.Location = new System.Drawing.Point(105, 442);
             this.textBoxProcessorCondition1.Name = "textBoxProcessorCondition1";
             this.textBoxProcessorCondition1.ReadOnly = true;
-            this.textBoxProcessorCondition1.Size = new System.Drawing.Size(116, 20);
+            this.textBoxProcessorCondition1.Size = new System.Drawing.Size(116, 18);
             this.textBoxProcessorCondition1.TabIndex = 37;
             // 
             // labelProcessorCurrentTask1
@@ -386,6 +389,9 @@
             // 
             // textBoxProcessorCurrentTask1
             // 
+            this.textBoxProcessorCurrentTask1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.textBoxProcessorCurrentTask1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxProcessorCurrentTask1.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCurrentTask1.Location = new System.Drawing.Point(51, 488);
             this.textBoxProcessorCurrentTask1.Multiline = true;
             this.textBoxProcessorCurrentTask1.Name = "textBoxProcessorCurrentTask1";
@@ -466,6 +472,9 @@
             // 
             // textBoxProcessorCurrentTask2
             // 
+            this.textBoxProcessorCurrentTask2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.textBoxProcessorCurrentTask2.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProcessorCurrentTask2.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCurrentTask2.Location = new System.Drawing.Point(274, 488);
             this.textBoxProcessorCurrentTask2.Multiline = true;
             this.textBoxProcessorCurrentTask2.Name = "textBoxProcessorCurrentTask2";
@@ -485,10 +494,13 @@
             // 
             // textBoxProcessorCondition2
             // 
+            this.textBoxProcessorCondition2.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.textBoxProcessorCondition2.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProcessorCondition2.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCondition2.Location = new System.Drawing.Point(328, 442);
             this.textBoxProcessorCondition2.Name = "textBoxProcessorCondition2";
             this.textBoxProcessorCondition2.ReadOnly = true;
-            this.textBoxProcessorCondition2.Size = new System.Drawing.Size(116, 20);
+            this.textBoxProcessorCondition2.Size = new System.Drawing.Size(116, 18);
             this.textBoxProcessorCondition2.TabIndex = 50;
             // 
             // labelProcessorCondition2
@@ -570,6 +582,9 @@
             // 
             // textBoxProcessorCurrentTask3
             // 
+            this.textBoxProcessorCurrentTask3.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.textBoxProcessorCurrentTask3.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProcessorCurrentTask3.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCurrentTask3.Location = new System.Drawing.Point(496, 488);
             this.textBoxProcessorCurrentTask3.Multiline = true;
             this.textBoxProcessorCurrentTask3.Name = "textBoxProcessorCurrentTask3";
@@ -589,10 +604,13 @@
             // 
             // textBoxProcessorCondition3
             // 
+            this.textBoxProcessorCondition3.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.textBoxProcessorCondition3.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProcessorCondition3.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCondition3.Location = new System.Drawing.Point(550, 442);
             this.textBoxProcessorCondition3.Name = "textBoxProcessorCondition3";
             this.textBoxProcessorCondition3.ReadOnly = true;
-            this.textBoxProcessorCondition3.Size = new System.Drawing.Size(116, 20);
+            this.textBoxProcessorCondition3.Size = new System.Drawing.Size(116, 18);
             this.textBoxProcessorCondition3.TabIndex = 61;
             // 
             // labelProcessorCondition3
@@ -673,6 +691,9 @@
             // 
             // textBoxProcessorCurrentTask4
             // 
+            this.textBoxProcessorCurrentTask4.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.textBoxProcessorCurrentTask4.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProcessorCurrentTask4.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCurrentTask4.Location = new System.Drawing.Point(717, 488);
             this.textBoxProcessorCurrentTask4.Multiline = true;
             this.textBoxProcessorCurrentTask4.Name = "textBoxProcessorCurrentTask4";
@@ -692,10 +713,13 @@
             // 
             // textBoxProcessorCondition4
             // 
+            this.textBoxProcessorCondition4.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.textBoxProcessorCondition4.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProcessorCondition4.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCondition4.Location = new System.Drawing.Point(771, 442);
             this.textBoxProcessorCondition4.Name = "textBoxProcessorCondition4";
             this.textBoxProcessorCondition4.ReadOnly = true;
-            this.textBoxProcessorCondition4.Size = new System.Drawing.Size(116, 20);
+            this.textBoxProcessorCondition4.Size = new System.Drawing.Size(116, 18);
             this.textBoxProcessorCondition4.TabIndex = 72;
             // 
             // labelProcessorCondition4
@@ -776,6 +800,9 @@
             // 
             // textBoxProcessorCurrentTask5
             // 
+            this.textBoxProcessorCurrentTask5.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.textBoxProcessorCurrentTask5.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProcessorCurrentTask5.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCurrentTask5.Location = new System.Drawing.Point(939, 488);
             this.textBoxProcessorCurrentTask5.Multiline = true;
             this.textBoxProcessorCurrentTask5.Name = "textBoxProcessorCurrentTask5";
@@ -795,10 +822,13 @@
             // 
             // textBoxProcessorCondition5
             // 
+            this.textBoxProcessorCondition5.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.textBoxProcessorCondition5.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProcessorCondition5.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCondition5.Location = new System.Drawing.Point(993, 442);
             this.textBoxProcessorCondition5.Name = "textBoxProcessorCondition5";
             this.textBoxProcessorCondition5.ReadOnly = true;
-            this.textBoxProcessorCondition5.Size = new System.Drawing.Size(116, 20);
+            this.textBoxProcessorCondition5.Size = new System.Drawing.Size(116, 18);
             this.textBoxProcessorCondition5.TabIndex = 83;
             // 
             // labelProcessorCondition5
@@ -865,7 +895,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Window;
+            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1148, 631);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.buttonUpdateProcessor5);
@@ -946,7 +976,8 @@
             this.Controls.Add(this.labelGenerator);
             this.Controls.Add(this.pictureBoxGenerator);
             this.Name = "Main";
-            this.Text = "Main";
+            this.Text = "ProcessorSimulator";
+            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGenerator)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGeneratorIndicator)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxManagerIndicator)).EndInit();
@@ -991,7 +1022,6 @@
         private System.Windows.Forms.TextBox textBoxProcessorCondition1;
         private System.Windows.Forms.Label labelProcessorCurrentTask1;
         private System.Windows.Forms.TextBox textBoxProcessorCurrentTask1;
-        private System.Windows.Forms.ProgressBar progressBarProcessor1;
         private PriborControlLibrary.HArrow hArrow2;
         private PriborControlLibrary.VArrow vArrow1;
         private PriborControlLibrary.VArrow vArrow2;
@@ -1041,6 +1071,7 @@
         private System.Windows.Forms.Label labelProcessor5;
         private System.Windows.Forms.PictureBox pictureBoxProcessor5;
         private System.Windows.Forms.Button buttonStop;
+        private System.Windows.Forms.ProgressBar progressBarProcessor1;
 
         
     }
