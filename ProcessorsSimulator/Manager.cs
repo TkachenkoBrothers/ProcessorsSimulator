@@ -30,7 +30,7 @@ namespace ProcessorsSimulator
         public conditionManager condition;
         public Queue<Task> taskQueue;
         public Generator generator;
-        private List<Processor> processors;
+        public List<Processor> processors;
         public Thread generatorThread;
         private Thread processorManager;
         private Thread[] processorsThreads;
@@ -76,7 +76,7 @@ namespace ProcessorsSimulator
         private void CreateGenerator()
         {
             generator = new Generator();
-            generator.GenerateTask += new Generator.GenerateTaskHandler(GetTask);
+            generator.TaskGenerated += new Generator.TaskGeneratedHandler(GetTask);
         }
         public void CreateGeneratorThread()
         {
@@ -94,6 +94,7 @@ namespace ProcessorsSimulator
             for(int i = 0; i < 5; i++)
             {
                 Processor currentProc = new Processor();
+                currentProc.id = i;
                 processors.Add(currentProc);
                 Thread currentThread = new Thread(new ThreadStart(currentProc.DoWork));
                 currentThread.Name = "Processor" + (i + 1).ToString();
@@ -142,7 +143,7 @@ namespace ProcessorsSimulator
                             currentTask = taskQueue.Dequeue(); // return first elem and delete it
                             if (QueueModified != null) QueueModified(this, null);
                             processors[i].currentTask = currentTask;
-                            Debug.Print(String.Format("Manager sends task (id={0}, operationsAmount={1}, supportedProcessors={2}) to Processor",
+                            Debug.Print(String.Format("Manager sends task (id={0}, operationsAmount={1}, supportedProcessors={2}) to Processor{3}",
                                                     currentTask.id.ToString(), currentTask.operationsAmont.ToString(), 
                                                     currentTask.getSupportedProcessors(), (i + 1).ToString()));
                             if (SendTaskToProcessor != null) SendTaskToProcessor(this, null);

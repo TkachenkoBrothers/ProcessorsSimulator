@@ -20,8 +20,8 @@ namespace ProcessorsSimulator
         public int workingTime { get; set; }
         public int currrentWorkingTime { get; set; }
         public int[] taskComplexityScope { get; set; }
-        public delegate void GenerateTaskHandler(Task task);
-        public event GenerateTaskHandler GenerateTask;
+        public delegate void TaskGeneratedHandler(Task task);
+        public event TaskGeneratedHandler TaskGenerated;
         public event EventHandler WorkDone;
         public void GenerateTasks()
         {
@@ -52,7 +52,7 @@ namespace ProcessorsSimulator
                         }
                     currentTask.supportedProcessors[i] = processorNumber; // random processor number 
                 }
-                if (GenerateTask != null) GenerateTask(currentTask); // call GenerateTask event if smb subscribed 
+                if (TaskGenerated != null) TaskGenerated(currentTask); // call GenerateTask event if smb subscribed 
             }
             if (WorkDone != null) WorkDone(this, null);
         }

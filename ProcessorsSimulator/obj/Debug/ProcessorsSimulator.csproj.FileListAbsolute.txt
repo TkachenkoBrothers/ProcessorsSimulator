@@ -22,3 +22,15 @@ C:\Users\Vladymyr\Documents\MultipleProcessorsSimulatorSystem\ProcessorsSimulato
 C:\Users\Vladymyr\Documents\MultipleProcessorsSimulatorSystem\ProcessorsSimulator\bin\Debug\PriborControlLibrary.pdb
 C:\Users\Vladymyr\Documents\MultipleProcessorsSimulatorSystem\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.exe
 C:\Users\Vladymyr\Documents\MultipleProcessorsSimulatorSystem\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.pdb
+D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\bin\Debug\ProcessorsSimulator.exe.config
+D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.exe
+D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.pdb
+D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\bin\Debug\ProcessorsSimulator.exe
+D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\bin\Debug\ProcessorsSimulator.pdb
+D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\bin\Debug\Microsoft.VisualBasic.PowerPacks.dll
+D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\bin\Debug\PriborControlLibrary.pdb
+D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\bin\Debug\ru\Microsoft.VisualBasic.PowerPacks.resources.dll
+D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.csprojResolveAssemblyReference.cache
+D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.Main.resources
+D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.Properties.Resources.resources
+D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.csproj.GenerateResource.Cache

@@ -23,7 +23,7 @@ namespace ProcessorsSimulator
       
         private void ManageInterface()
         {
-            this.manager.generator.GenerateTask += new Generator.GenerateTaskHandler(BlinkWhenNewTaskGenerated);
+            this.manager.generator.TaskGenerated += new Generator.TaskGeneratedHandler(BlinkWhenNewTaskGenerated);
             this.manager.ProcessorsWorkDone += new EventHandler(OnWorkDone); // enable to start again
             this.manager.QueueModified += new EventHandler(OnQueueModified);
             this.manager.SendTaskToProcessor += new EventHandler(BlinkWhenTaskSended);
@@ -31,6 +31,54 @@ namespace ProcessorsSimulator
             this.maskedTextBoxScopeFrom.Text = manager.generator.taskComplexityScope[0].ToString("00000");
             this.maskedTextBoxScopeTo.Text = manager.generator.taskComplexityScope[1].ToString("00000");
             this.maskedTextBoxWorkingTime.Text = manager.generator.workingTime.ToString("0000000");
+            this.manager.processors.All(p => { p.NewProcessStarted += OnNewProcessStarted; return true; }); // if process any started initialize progress bar
+            this.manager.processors.All(p => { p.ProgressChanged += OnProgressChanged; return true; });
+        }
+        private void OnNewProcessStarted(int id, int maximum)
+        {
+            switch (id)
+            {
+                case 0:
+                    this.Invoke((MethodInvoker)delegate { progressBarProcessor1.Value = 0; progressBarProcessor1.Maximum = maximum;});
+                    break;
+                case 1:
+                    this.Invoke((MethodInvoker)delegate { progressBarProcessor2.Value = 0; progressBarProcessor2.Maximum = maximum; });
+                    break;
+                case 2:
+                    this.Invoke((MethodInvoker)delegate { progressBarProcessor3.Value = 0; progressBarProcessor3.Maximum = maximum; });
+                    break;
+                case 3:
+                    this.Invoke((MethodInvoker)delegate { progressBarProcessor4.Value = 0; progressBarProcessor4.Maximum = maximum; });
+                    break;
+                case 4:
+                    this.Invoke((MethodInvoker)delegate { progressBarProcessor5.Value = 0; progressBarProcessor5.Maximum = maximum; });
+                    break;
+                default:
+                    break;
+            }
+        }
+        private void OnProgressChanged(int id, int progress)
+        {
+            switch (id)
+            {
+                case 0:
+                    this.Invoke((MethodInvoker)delegate { progressBarProcessor1.Value = progress; });
+                    break;
+                case 1:
+                    this.Invoke((MethodInvoker)delegate { progressBarProcessor2.Value = progress; });
+                    break;
+                case 2:
+                    this.Invoke((MethodInvoker)delegate { progressBarProcessor3.Value = progress; });
+                    break;
+                case 3:
+                    this.Invoke((MethodInvoker)delegate { progressBarProcessor4.Value = progress; });
+                    break;
+                case 4:
+                    this.Invoke((MethodInvoker)delegate { progressBarProcessor5.Value = progress; });
+                    break;
+                default:
+                    break;
+            }
         }
         private void OnQueueModified(object sender, EventArgs e)
         {
@@ -45,10 +93,21 @@ namespace ProcessorsSimulator
             }
             this.Invoke((MethodInvoker)delegate { richTextBoxManagerQueue.Text = res; });
         }
+        private void ResetProgressBarsValues()
+        {
+            this.Invoke((MethodInvoker)delegate { progressBarProcessor1.Value = 0; });
+            this.Invoke((MethodInvoker)delegate { progressBarProcessor2.Value = 0; });
+            this.Invoke((MethodInvoker)delegate { progressBarProcessor3.Value = 0; });
+            this.Invoke((MethodInvoker)delegate { progressBarProcessor4.Value = 0; });
+            this.Invoke((MethodInvoker)delegate { progressBarProcessor5.Value = 0; });
+        }
         private void OnWorkDone(object sender, EventArgs e)
         {
             //this.buttonStart.Enabled = true;
             this.Invoke((MethodInvoker)delegate { buttonStart.Enabled = true; });
+            ResetProgressBarsValues();
+            this.manager.processors.All(p => { p.NewProcessStarted += OnNewProcessStarted; return true; }); // reload subscribes (because processors reloaded)
+            this.manager.processors.All(p => { p.ProgressChanged += OnProgressChanged; return true; });
         }
         private void BlinkWhenTaskSended(object sender, EventArgs e)
         {
