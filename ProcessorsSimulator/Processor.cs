@@ -16,7 +16,7 @@ namespace ProcessorsSimulator
         {
             power = 100; // default
             condition = processor_condition.waitingForTask;
-            currentTask = null;
+            currentTask = null; 
         }
         public int id;
         public int power { get; set; } // n operations per milisecond

@@ -70,7 +70,7 @@ namespace ProcessorsSimulator
             taskQueue = new Queue<Task>(); // reload
             processors = new List<Processor>();
             processorsThreads = new Thread[5];
-            CreateProcessors();
+            CreateProcessors(); 
             CreateManageProcessors();
         }
         private void CreateGenerator()

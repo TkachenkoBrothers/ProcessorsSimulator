@@ -828,7 +828,7 @@
             // 
             this.pictureBoxProcessor5.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pictureBoxProcessor5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxProcessor5.Location = new System.Drawing.Point(924, 379);
+            this.pictureBoxProcessor5.Location = new System.Drawing.Point(923, 379);
             this.pictureBoxProcessor5.Name = "pictureBoxProcessor5";
             this.pictureBoxProcessor5.Size = new System.Drawing.Size(198, 202);
             this.pictureBoxProcessor5.TabIndex = 78;

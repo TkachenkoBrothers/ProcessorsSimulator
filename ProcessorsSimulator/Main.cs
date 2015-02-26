@@ -57,7 +57,7 @@ namespace ProcessorsSimulator
                     break;
             }
         }
-        private void OnProgressChanged(int id, int progress)
+        private void OnProgressChanged(int id, int progress) 
         {
             switch (id)
             {

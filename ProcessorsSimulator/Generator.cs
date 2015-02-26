@@ -7,7 +7,7 @@ using System.Threading;
 using System.Diagnostics;
 
 namespace ProcessorsSimulator
-{
+{ 
     class Generator
     {
         public Generator()
