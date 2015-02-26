@@ -83,6 +83,7 @@ namespace ProcessorsSimulator
         private void OnQueueModified(object sender, EventArgs e)
         {
             string res = "";
+            manager.queueMutex.WaitOne();
             if (manager.taskQueue.Count() != 0)
             {
                 foreach (Task task in manager.taskQueue)
@@ -91,6 +92,7 @@ namespace ProcessorsSimulator
                                         task.id.ToString(), task.operationsAmont.ToString(), task.getSupportedProcessors(), "\n");
                 }
             }
+            manager.queueMutex.ReleaseMutex();
             this.Invoke((MethodInvoker)delegate { richTextBoxManagerQueue.Text = res; });
         }
         private void ResetProgressBarsValues()
@@ -105,6 +107,7 @@ namespace ProcessorsSimulator
         {
             //this.buttonStart.Enabled = true;
             this.Invoke((MethodInvoker)delegate { buttonStart.Enabled = true; });
+            this.Invoke((MethodInvoker)delegate { buttonGeneratorUpdate.Enabled = true; });
             ResetProgressBarsValues();
             this.manager.processors.All(p => { p.NewProcessStarted += OnNewProcessStarted; return true; }); // reload subscribes (because processors reloaded)
             this.manager.processors.All(p => { p.ProgressChanged += OnProgressChanged; return true; });
@@ -183,6 +186,7 @@ namespace ProcessorsSimulator
         {
             //manager.generator.workingTime = 5000; // reload
             this.buttonStart.Enabled = false;
+            this.buttonGeneratorUpdate.Enabled = false;
             manager.Manage();
         }
     }

@@ -24,9 +24,11 @@ namespace ProcessorsSimulator
             CreateManageProcessors();
             generator.WorkDone += new EventHandler(OnWorkDone);
             this.ProcessorsWorkDone += OnProcessorsWorkDone;
+            queueMutex = new Mutex();
             Debug.Print("Manager initialized");
         }
 
+        public Mutex queueMutex;
         public conditionManager condition;
         public Queue<Task> taskQueue;
         public Generator generator;
@@ -47,10 +49,12 @@ namespace ProcessorsSimulator
         }
         private void GetTask(Task task)
         {
+            queueMutex.WaitOne();
             taskQueue.Enqueue(task);
             Debug.Print(String.Format("Task (id={0}, operationsAmount={1}, supportedProcessors={2}) is added to queue", 
                                 task.id.ToString(), task.operationsAmont.ToString(), task.getSupportedProcessors()));
             if (QueueModified != null) QueueModified(this, null);
+            queueMutex.ReleaseMutex();
         }
         private void OnWorkDone(object sender, EventArgs e)
         {
@@ -65,9 +69,11 @@ namespace ProcessorsSimulator
         //
         private void OnProcessorsWorkDone(object sender, EventArgs e) 
         {
+            queueMutex.WaitOne();
             Debug.Print("Processors work is done.");
             Debug.Print("Queue count = " + taskQueue.Count().ToString());
             taskQueue = new Queue<Task>(); // reload
+            queueMutex.ReleaseMutex();
             processors = new List<Processor>();
             processorsThreads = new Thread[5];
             CreateProcessors(); 
@@ -132,6 +138,7 @@ namespace ProcessorsSimulator
         {
             while(true)
             {
+                queueMutex.WaitOne();
                 if (taskQueue.Count != 0)
                 {
                     Thread.Sleep(50); // extra time for displaying queue (only for those tasks, which is send to processors immediately)
@@ -159,11 +166,13 @@ namespace ProcessorsSimulator
                             if (ProcessorsWorkDone != null)
                             {
                                 ProcessorsWorkDone(this, null);
+                                queueMutex.ReleaseMutex();
                                 break;
                             }
                             else Thread.Sleep(30); 
                     }         
                 }
+                queueMutex.ReleaseMutex();
             }
         }
     }
