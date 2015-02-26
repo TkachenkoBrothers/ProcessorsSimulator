@@ -148,6 +148,7 @@ namespace ProcessorsSimulator
 
         private void OnProcessEnded(int id, processor_condition condition)
         {
+
             switch (id)
             {
                 case 0:
@@ -155,6 +156,7 @@ namespace ProcessorsSimulator
                     {
                         this.textBoxProcessorCurrentTask1.Text = "";
                         this.textBoxProcessorCondition1.Text = condition.ToString();
+                        progressBarProcessor1.Value = 0;
                     });
 
                     break;
@@ -163,6 +165,7 @@ namespace ProcessorsSimulator
                     {
                         this.textBoxProcessorCurrentTask2.Text = "";
                         this.textBoxProcessorCondition2.Text = condition.ToString();
+                        progressBarProcessor2.Value = 0;
                     });
                     break;
                 case 2:
@@ -170,6 +173,7 @@ namespace ProcessorsSimulator
                     {
                         this.textBoxProcessorCurrentTask3.Text = "";
                         this.textBoxProcessorCondition3.Text = condition.ToString();
+                        progressBarProcessor3.Value = 0;
                     });
                     break;
                 case 3:
@@ -177,6 +181,7 @@ namespace ProcessorsSimulator
                     {
                         this.textBoxProcessorCurrentTask4.Text = "";
                         this.textBoxProcessorCondition4.Text = condition.ToString();
+                        progressBarProcessor4.Value = 0;
                     });
                     break;
                 case 4:
@@ -184,6 +189,7 @@ namespace ProcessorsSimulator
                     {
                         this.textBoxProcessorCurrentTask5.Text = "";
                         this.textBoxProcessorCondition5.Text = condition.ToString();
+                        progressBarProcessor5.Value = 0;
                     });
                     break;
                 default:
@@ -361,6 +367,15 @@ namespace ProcessorsSimulator
         private void progressBarProcessor3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonStop_Click(object sender, EventArgs e)
+        {
+            manager.taskQueue.Clear();
+            manager.generator.currrentWorkingTime = -1; // forsly rise WorkDone event
+            manager.processors.All(x => { x.condition = processor_condition.waitingForTask; return true; }); // forsly rise ProcessorsWorkDone event        
+            //ResetProgressBarsValues();
+            this.Invoke((MethodInvoker)delegate { richTextBoxManagerQueue.Text = ""; });
         }
     }
 }

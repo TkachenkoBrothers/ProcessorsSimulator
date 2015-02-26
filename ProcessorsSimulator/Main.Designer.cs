@@ -105,6 +105,7 @@
             this.labelProcessorPower5 = new System.Windows.Forms.Label();
             this.labelProcessor5 = new System.Windows.Forms.Label();
             this.pictureBoxProcessor5 = new System.Windows.Forms.PictureBox();
+            this.buttonStop = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGenerator)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGeneratorIndicator)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxManagerIndicator)).BeginInit();
@@ -209,7 +210,7 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(771, 230);
+            this.buttonStart.Location = new System.Drawing.Point(676, 230);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(75, 23);
             this.buttonStart.TabIndex = 13;
@@ -850,12 +851,23 @@
             this.pictureBoxProcessor5.TabIndex = 78;
             this.pictureBoxProcessor5.TabStop = false;
             // 
+            // buttonStop
+            // 
+            this.buttonStop.Location = new System.Drawing.Point(771, 230);
+            this.buttonStop.Name = "buttonStop";
+            this.buttonStop.Size = new System.Drawing.Size(75, 23);
+            this.buttonStop.TabIndex = 89;
+            this.buttonStop.Text = "Stop";
+            this.buttonStop.UseVisualStyleBackColor = true;
+            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1148, 631);
+            this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.buttonUpdateProcessor5);
             this.Controls.Add(this.vArrow6);
             this.Controls.Add(this.progressBarProcessor5);
@@ -1028,6 +1040,7 @@
         private System.Windows.Forms.Label labelProcessorPower5;
         private System.Windows.Forms.Label labelProcessor5;
         private System.Windows.Forms.PictureBox pictureBoxProcessor5;
+        private System.Windows.Forms.Button buttonStop;
 
         
     }

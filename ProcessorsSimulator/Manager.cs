@@ -142,20 +142,24 @@ namespace ProcessorsSimulator
                 if (taskQueue.Count != 0)
                 {
                     Thread.Sleep(50); // extra time for displaying queue (only for those tasks, which is send to processors immediately)
-                    Task currentTask = taskQueue.Peek(); // peeks first elem in queue
+                    Task currentTask = new Task();
+                    if (taskQueue.Count != 0)
+                        currentTask = taskQueue.Peek(); // peeks first elem in queue
                     for(int i = 0; i < processors.Count; i++)
                     {
-                        if (processors[i].condition == processor_condition.waitingForTask && taskQueue.Count != 0)
-                        {
-                            currentTask = taskQueue.Dequeue(); // return first elem and delete it
-                            if (QueueModified != null) QueueModified(this, null);
-                            processors[i].currentTask = currentTask;
-                            Debug.Print(String.Format("Manager sends task (id={0}, operationsAmount={1}, supportedProcessors={2}) to Processor{3}",
-                                                    currentTask.id.ToString(), currentTask.operationsAmont.ToString(), 
-                                                    currentTask.getSupportedProcessors(), (i + 1).ToString()));
-                            if (SendTaskToProcessor != null) SendTaskToProcessor(this, null);
-                            processors[i].condition = processor_condition.processing;
-                        }             
+                        bool supported = currentTask.supportedProcessors.Contains(processors[i].id + 1);
+                        if (supported)
+                            if (processors[i].condition == processor_condition.waitingForTask && taskQueue.Count != 0)
+                            {
+                                currentTask = taskQueue.Dequeue(); // return first elem and delete it
+                                if (QueueModified != null) QueueModified(this, null);
+                                processors[i].currentTask = currentTask;
+                                Debug.Print(String.Format("Manager sends task (id={0}, operationsAmount={1}, supportedProcessors={2}) to Processor{3}",
+                                                        currentTask.id.ToString(), currentTask.operationsAmont.ToString(), 
+                                                        currentTask.getSupportedProcessors(), (i + 1).ToString()));
+                                if (SendTaskToProcessor != null) SendTaskToProcessor(this, null);
+                                processors[i].condition = processor_condition.processing;
+                            }             
                     }
                 }
                 else // queue is empty
