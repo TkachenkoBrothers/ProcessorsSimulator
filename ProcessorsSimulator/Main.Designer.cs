@@ -123,7 +123,7 @@
             this.pictureBoxGenerator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxGenerator.Location = new System.Drawing.Point(200, 12);
             this.pictureBoxGenerator.Name = "pictureBoxGenerator";
-            this.pictureBoxGenerator.Size = new System.Drawing.Size(198, 202);
+            this.pictureBoxGenerator.Size = new System.Drawing.Size(198, 257);
             this.pictureBoxGenerator.TabIndex = 0;
             this.pictureBoxGenerator.TabStop = false;
             // 
@@ -182,7 +182,7 @@
             // 
             this.labelGeneratorIndicator.AutoSize = true;
             this.labelGeneratorIndicator.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelGeneratorIndicator.Location = new System.Drawing.Point(275, 153);
+            this.labelGeneratorIndicator.Location = new System.Drawing.Point(273, 205);
             this.labelGeneratorIndicator.Name = "labelGeneratorIndicator";
             this.labelGeneratorIndicator.Size = new System.Drawing.Size(48, 13);
             this.labelGeneratorIndicator.TabIndex = 10;
@@ -192,7 +192,7 @@
             // 
             this.pictureBoxGeneratorIndicator.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pictureBoxGeneratorIndicator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxGeneratorIndicator.Location = new System.Drawing.Point(280, 166);
+            this.pictureBoxGeneratorIndicator.Location = new System.Drawing.Point(278, 218);
             this.pictureBoxGeneratorIndicator.Name = "pictureBoxGeneratorIndicator";
             this.pictureBoxGeneratorIndicator.Size = new System.Drawing.Size(37, 35);
             this.pictureBoxGeneratorIndicator.TabIndex = 11;
@@ -200,7 +200,7 @@
             // 
             // buttonGeneratorUpdate
             // 
-            this.buttonGeneratorUpdate.Location = new System.Drawing.Point(340, 178);
+            this.buttonGeneratorUpdate.Location = new System.Drawing.Point(333, 230);
             this.buttonGeneratorUpdate.Name = "buttonGeneratorUpdate";
             this.buttonGeneratorUpdate.Size = new System.Drawing.Size(48, 23);
             this.buttonGeneratorUpdate.TabIndex = 12;
@@ -275,7 +275,7 @@
             // hArrow1
             // 
             this.hArrow1.ArrowType = ArrowT.none;
-            this.hArrow1.Location = new System.Drawing.Point(397, 110);
+            this.hArrow1.Location = new System.Drawing.Point(397, 131);
             this.hArrow1.Margin = new System.Windows.Forms.Padding(0);
             this.hArrow1.Name = "hArrow1";
             this.hArrow1.Size = new System.Drawing.Size(81, 10);
