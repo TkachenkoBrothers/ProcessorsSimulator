@@ -13,12 +13,16 @@ namespace ProcessorsSimulator
 {
     public partial class Main : Form
     {
+        private List<TextBox> processorsCurrentTaskList;
+        private List<MaskedTextBox> processorsPowerList;
+        private List<TextBox> processorsConditionList;
         private Manager manager;
         public Main()
         {
             InitializeComponent();
             manager = new Manager();
             ManageInterface();
+            ProcessorsInterface();
         }
       
         private void ManageInterface()
@@ -33,25 +37,154 @@ namespace ProcessorsSimulator
             this.maskedTextBoxWorkingTime.Text = manager.generator.workingTime.ToString("0000000");
             this.manager.processors.All(p => { p.NewProcessStarted += OnNewProcessStarted; return true; }); // if process any started initialize progress bar
             this.manager.processors.All(p => { p.ProgressChanged += OnProgressChanged; return true; });
+            this.manager.processors.All(p => { p.ProcessEnded += OnProcessEnded; return true; });
         }
-        private void OnNewProcessStarted(int id, int maximum)
+
+        private void ProcessorsInterface()
+        {
+            
+            processorsConditionList = new List<TextBox> { };
+            processorsPowerList = new List<MaskedTextBox> { };
+            processorsCurrentTaskList = new List<TextBox> { };
+            
+           // var numbersAndWords = numbers.Zip(words, (n, w) => new { Number = n, Word = w });
+            var conditions = processorsConditionList.Zip(manager.processors , (c , p) => new { textboxCondition = c, procCondition = p.condition });
+            var powers = processorsPowerList.Zip(manager.processors, (c, p) => new { textboxPower = c, procPower = p.power });
+            var currentTasks = processorsCurrentTaskList.Zip(manager.processors, (c, p) => new { textboxCurrentTask = c, procCurrentTask = p.currentTask });
+
+            processorsPowerList.Add(maskedTextBoxProcessorPower1);
+            processorsPowerList.Add(maskedTextBoxProcessorPower2);
+            processorsPowerList.Add(maskedTextBoxProcessorPower3);
+            processorsPowerList.Add(maskedTextBoxProcessorPower4);
+            processorsPowerList.Add(maskedTextBoxProcessorPower5);
+
+            processorsConditionList.Add(textBoxProcessorCondition1);
+            processorsConditionList.Add(textBoxProcessorCondition2);
+            processorsConditionList.Add(textBoxProcessorCondition3);
+            processorsConditionList.Add(textBoxProcessorCondition4);
+            processorsConditionList.Add(textBoxProcessorCondition5);
+
+            processorsCurrentTaskList.Add(textBoxProcessorCurrentTask1);
+            processorsCurrentTaskList.Add(textBoxProcessorCurrentTask2);
+            processorsCurrentTaskList.Add(textBoxProcessorCurrentTask3);
+            processorsCurrentTaskList.Add(textBoxProcessorCurrentTask4);
+            processorsCurrentTaskList.Add(textBoxProcessorCurrentTask5);
+
+            foreach (var cond in conditions)
+            {
+                cond.textboxCondition.Text = cond.procCondition.ToString();
+            }
+            foreach (var pow in powers)
+            {
+                pow.textboxPower.Text = pow.procPower.ToString("00000");
+            }
+            foreach (var cur in currentTasks)
+            {
+                try
+                {
+                    cur.textboxCurrentTask.Text = cur.procCurrentTask.ToString();
+                }
+                catch (NullReferenceException)
+                {
+                    
+                    
+                }
+            }
+        }
+        private void OnNewProcessStarted(int id, int maximum, Task currentTask, processor_condition condition)
         {
             switch (id)
             {
                 case 0:
-                    this.Invoke((MethodInvoker)delegate { progressBarProcessor1.Value = 0; progressBarProcessor1.Maximum = maximum;});
+                    this.Invoke((MethodInvoker)delegate 
+                    {
+                        progressBarProcessor1.Value = 0; 
+                        progressBarProcessor1.Maximum = maximum; 
+                        this.textBoxProcessorCurrentTask1.Text = currentTask.ToString();
+                        this.textBoxProcessorCondition1.Text = condition.ToString();
+                    });
+                    
                     break;
                 case 1:
-                    this.Invoke((MethodInvoker)delegate { progressBarProcessor2.Value = 0; progressBarProcessor2.Maximum = maximum; });
+                    this.Invoke((MethodInvoker)delegate 
+                    {
+                        progressBarProcessor2.Value = 0; 
+                        progressBarProcessor2.Maximum = maximum; 
+                        this.textBoxProcessorCurrentTask2.Text = currentTask.ToString();
+                        this.textBoxProcessorCondition2.Text = condition.ToString();
+                    });
                     break;
                 case 2:
-                    this.Invoke((MethodInvoker)delegate { progressBarProcessor3.Value = 0; progressBarProcessor3.Maximum = maximum; });
+                    this.Invoke((MethodInvoker)delegate 
+                    {
+                        progressBarProcessor3.Value = 0; 
+                        progressBarProcessor3.Maximum = maximum;
+                        this.textBoxProcessorCurrentTask3.Text = currentTask.ToString();
+                        this.textBoxProcessorCondition3.Text = condition.ToString();                   
+                    });
                     break;
                 case 3:
-                    this.Invoke((MethodInvoker)delegate { progressBarProcessor4.Value = 0; progressBarProcessor4.Maximum = maximum; });
+                    this.Invoke((MethodInvoker)delegate 
+                    {
+                        progressBarProcessor4.Value = 0;
+                        progressBarProcessor4.Maximum = maximum; 
+                        this.textBoxProcessorCurrentTask4.Text = currentTask.ToString();
+                        this.textBoxProcessorCondition4.Text = condition.ToString();
+                    });
                     break;
                 case 4:
-                    this.Invoke((MethodInvoker)delegate { progressBarProcessor5.Value = 0; progressBarProcessor5.Maximum = maximum; });
+                    this.Invoke((MethodInvoker)delegate 
+                    {
+                        progressBarProcessor5.Value = 0; 
+                        progressBarProcessor5.Maximum = maximum; 
+                        this.textBoxProcessorCurrentTask5.Text = currentTask.ToString();
+                        this.textBoxProcessorCondition5.Text = condition.ToString();
+                    });
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void OnProcessEnded(int id, processor_condition condition)
+        {
+            switch (id)
+            {
+                case 0:
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        this.textBoxProcessorCurrentTask1.Text = "";
+                        this.textBoxProcessorCondition1.Text = condition.ToString();
+                    });
+
+                    break;
+                case 1:
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        this.textBoxProcessorCurrentTask2.Text = "";
+                        this.textBoxProcessorCondition2.Text = condition.ToString();
+                    });
+                    break;
+                case 2:
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        this.textBoxProcessorCurrentTask3.Text = "";
+                        this.textBoxProcessorCondition3.Text = condition.ToString();
+                    });
+                    break;
+                case 3:
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        this.textBoxProcessorCurrentTask4.Text = "";
+                        this.textBoxProcessorCondition4.Text = condition.ToString();
+                    });
+                    break;
+                case 4:
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        this.textBoxProcessorCurrentTask5.Text = "";
+                        this.textBoxProcessorCondition5.Text = condition.ToString();
+                    });
                     break;
                 default:
                     break;
@@ -108,9 +241,15 @@ namespace ProcessorsSimulator
             //this.buttonStart.Enabled = true;
             this.Invoke((MethodInvoker)delegate { buttonStart.Enabled = true; });
             this.Invoke((MethodInvoker)delegate { buttonGeneratorUpdate.Enabled = true; });
+            this.Invoke((MethodInvoker)delegate { this.buttonUpdateProcessor1.Enabled = true; });
+            this.Invoke((MethodInvoker)delegate { this.buttonUpdateProcessor2.Enabled = true; });
+            this.Invoke((MethodInvoker)delegate { this.buttonUpdateProcessor3.Enabled = true; });
+            this.Invoke((MethodInvoker)delegate { this.buttonUpdateProcessor4.Enabled = true; });
+            this.Invoke((MethodInvoker)delegate { this.buttonUpdateProcessor5.Enabled = true; });
             ResetProgressBarsValues();
             this.manager.processors.All(p => { p.NewProcessStarted += OnNewProcessStarted; return true; }); // reload subscribes (because processors reloaded)
             this.manager.processors.All(p => { p.ProgressChanged += OnProgressChanged; return true; });
+            this.manager.processors.All(p => { p.ProcessEnded += OnProcessEnded; return true; });
         }
         private void BlinkWhenTaskSended(object sender, EventArgs e)
         {
@@ -168,7 +307,6 @@ namespace ProcessorsSimulator
                 }
                 
                 manager.generator.workingTime = workingTime;
-                MessageBox.Show("working time" + manager.generator.workingTime.ToString());
             }
             else
             {
@@ -187,7 +325,42 @@ namespace ProcessorsSimulator
             //manager.generator.workingTime = 5000; // reload
             this.buttonStart.Enabled = false;
             this.buttonGeneratorUpdate.Enabled = false;
+            this.buttonUpdateProcessor1.Enabled = false;
+            this.buttonUpdateProcessor2.Enabled = false;
+            this.buttonUpdateProcessor3.Enabled = false;
+            this.buttonUpdateProcessor4.Enabled = false;
+            this.buttonUpdateProcessor5.Enabled = false;
             manager.Manage();
+        }
+
+        private void buttonUpdateProcessor1_Click(object sender, EventArgs e)
+        {
+            manager.processors[0].power = int.Parse(maskedTextBoxProcessorPower1.Text);
+        }
+
+        private void buttonUpdateProcessor2_Click(object sender, EventArgs e)
+        {
+            manager.processors[1].power = int.Parse(maskedTextBoxProcessorPower2.Text);
+        }
+
+        private void buttonUpdateProcessor3_Click(object sender, EventArgs e)
+        {
+            manager.processors[2].power = int.Parse(maskedTextBoxProcessorPower3.Text);
+        }
+
+        private void buttonUpdateProcessor4_Click(object sender, EventArgs e)
+        {
+            manager.processors[3].power = int.Parse(maskedTextBoxProcessorPower4.Text);
+        }
+
+        private void buttonUpdateProcessor5_Click(object sender, EventArgs e)
+        {
+            manager.processors[4].power = int.Parse(maskedTextBoxProcessorPower5.Text);
+        }
+
+        private void progressBarProcessor3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

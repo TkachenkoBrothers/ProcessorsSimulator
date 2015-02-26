@@ -332,7 +332,7 @@
             this.pictureBoxProcessor1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxProcessor1.Location = new System.Drawing.Point(36, 379);
             this.pictureBoxProcessor1.Name = "pictureBoxProcessor1";
-            this.pictureBoxProcessor1.Size = new System.Drawing.Size(198, 202);
+            this.pictureBoxProcessor1.Size = new System.Drawing.Size(198, 216);
             this.pictureBoxProcessor1.TabIndex = 32;
             this.pictureBoxProcessor1.TabStop = false;
             // 
@@ -369,6 +369,7 @@
             // 
             this.textBoxProcessorCondition1.Location = new System.Drawing.Point(105, 442);
             this.textBoxProcessorCondition1.Name = "textBoxProcessorCondition1";
+            this.textBoxProcessorCondition1.ReadOnly = true;
             this.textBoxProcessorCondition1.Size = new System.Drawing.Size(116, 20);
             this.textBoxProcessorCondition1.TabIndex = 37;
             // 
@@ -387,12 +388,13 @@
             this.textBoxProcessorCurrentTask1.Location = new System.Drawing.Point(51, 488);
             this.textBoxProcessorCurrentTask1.Multiline = true;
             this.textBoxProcessorCurrentTask1.Name = "textBoxProcessorCurrentTask1";
-            this.textBoxProcessorCurrentTask1.Size = new System.Drawing.Size(170, 40);
+            this.textBoxProcessorCurrentTask1.ReadOnly = true;
+            this.textBoxProcessorCurrentTask1.Size = new System.Drawing.Size(170, 51);
             this.textBoxProcessorCurrentTask1.TabIndex = 39;
             // 
             // progressBarProcessor1
             // 
-            this.progressBarProcessor1.Location = new System.Drawing.Point(51, 534);
+            this.progressBarProcessor1.Location = new System.Drawing.Point(51, 545);
             this.progressBarProcessor1.Name = "progressBarProcessor1";
             this.progressBarProcessor1.Size = new System.Drawing.Size(170, 17);
             this.progressBarProcessor1.TabIndex = 40;
@@ -427,21 +429,23 @@
             // 
             // buttonUpdateProcessor1
             // 
-            this.buttonUpdateProcessor1.Location = new System.Drawing.Point(173, 554);
+            this.buttonUpdateProcessor1.Location = new System.Drawing.Point(173, 568);
             this.buttonUpdateProcessor1.Name = "buttonUpdateProcessor1";
             this.buttonUpdateProcessor1.Size = new System.Drawing.Size(48, 23);
             this.buttonUpdateProcessor1.TabIndex = 44;
             this.buttonUpdateProcessor1.Text = "update";
             this.buttonUpdateProcessor1.UseVisualStyleBackColor = true;
+            this.buttonUpdateProcessor1.Click += new System.EventHandler(this.buttonUpdateProcessor1_Click);
             // 
             // buttonUpdateProcessor2
             // 
-            this.buttonUpdateProcessor2.Location = new System.Drawing.Point(396, 554);
+            this.buttonUpdateProcessor2.Location = new System.Drawing.Point(396, 568);
             this.buttonUpdateProcessor2.Name = "buttonUpdateProcessor2";
             this.buttonUpdateProcessor2.Size = new System.Drawing.Size(48, 23);
             this.buttonUpdateProcessor2.TabIndex = 55;
             this.buttonUpdateProcessor2.Text = "update";
             this.buttonUpdateProcessor2.UseVisualStyleBackColor = true;
+            this.buttonUpdateProcessor2.Click += new System.EventHandler(this.buttonUpdateProcessor2_Click);
             // 
             // vArrow3
             // 
@@ -454,7 +458,7 @@
             // 
             // progressBarProcessor2
             // 
-            this.progressBarProcessor2.Location = new System.Drawing.Point(274, 534);
+            this.progressBarProcessor2.Location = new System.Drawing.Point(274, 545);
             this.progressBarProcessor2.Name = "progressBarProcessor2";
             this.progressBarProcessor2.Size = new System.Drawing.Size(170, 17);
             this.progressBarProcessor2.TabIndex = 53;
@@ -464,7 +468,8 @@
             this.textBoxProcessorCurrentTask2.Location = new System.Drawing.Point(274, 488);
             this.textBoxProcessorCurrentTask2.Multiline = true;
             this.textBoxProcessorCurrentTask2.Name = "textBoxProcessorCurrentTask2";
-            this.textBoxProcessorCurrentTask2.Size = new System.Drawing.Size(170, 40);
+            this.textBoxProcessorCurrentTask2.ReadOnly = true;
+            this.textBoxProcessorCurrentTask2.Size = new System.Drawing.Size(170, 51);
             this.textBoxProcessorCurrentTask2.TabIndex = 52;
             // 
             // labelProcessorCurrentTask2
@@ -481,6 +486,7 @@
             // 
             this.textBoxProcessorCondition2.Location = new System.Drawing.Point(328, 442);
             this.textBoxProcessorCondition2.Name = "textBoxProcessorCondition2";
+            this.textBoxProcessorCondition2.ReadOnly = true;
             this.textBoxProcessorCondition2.Size = new System.Drawing.Size(116, 20);
             this.textBoxProcessorCondition2.TabIndex = 50;
             // 
@@ -530,18 +536,19 @@
             this.pictureBoxProcessor2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxProcessor2.Location = new System.Drawing.Point(259, 379);
             this.pictureBoxProcessor2.Name = "pictureBoxProcessor2";
-            this.pictureBoxProcessor2.Size = new System.Drawing.Size(198, 202);
+            this.pictureBoxProcessor2.Size = new System.Drawing.Size(198, 216);
             this.pictureBoxProcessor2.TabIndex = 45;
             this.pictureBoxProcessor2.TabStop = false;
             // 
             // buttonUpdateProcessor3
             // 
-            this.buttonUpdateProcessor3.Location = new System.Drawing.Point(618, 554);
+            this.buttonUpdateProcessor3.Location = new System.Drawing.Point(618, 568);
             this.buttonUpdateProcessor3.Name = "buttonUpdateProcessor3";
             this.buttonUpdateProcessor3.Size = new System.Drawing.Size(48, 23);
             this.buttonUpdateProcessor3.TabIndex = 66;
             this.buttonUpdateProcessor3.Text = "update";
             this.buttonUpdateProcessor3.UseVisualStyleBackColor = true;
+            this.buttonUpdateProcessor3.Click += new System.EventHandler(this.buttonUpdateProcessor3_Click);
             // 
             // vArrow4
             // 
@@ -554,17 +561,19 @@
             // 
             // progressBarProcessor3
             // 
-            this.progressBarProcessor3.Location = new System.Drawing.Point(496, 534);
+            this.progressBarProcessor3.Location = new System.Drawing.Point(500, 545);
             this.progressBarProcessor3.Name = "progressBarProcessor3";
             this.progressBarProcessor3.Size = new System.Drawing.Size(170, 17);
             this.progressBarProcessor3.TabIndex = 64;
+            this.progressBarProcessor3.Click += new System.EventHandler(this.progressBarProcessor3_Click);
             // 
             // textBoxProcessorCurrentTask3
             // 
             this.textBoxProcessorCurrentTask3.Location = new System.Drawing.Point(496, 488);
             this.textBoxProcessorCurrentTask3.Multiline = true;
             this.textBoxProcessorCurrentTask3.Name = "textBoxProcessorCurrentTask3";
-            this.textBoxProcessorCurrentTask3.Size = new System.Drawing.Size(170, 40);
+            this.textBoxProcessorCurrentTask3.ReadOnly = true;
+            this.textBoxProcessorCurrentTask3.Size = new System.Drawing.Size(170, 51);
             this.textBoxProcessorCurrentTask3.TabIndex = 63;
             // 
             // labelProcessorCurrentTask3
@@ -581,6 +590,7 @@
             // 
             this.textBoxProcessorCondition3.Location = new System.Drawing.Point(550, 442);
             this.textBoxProcessorCondition3.Name = "textBoxProcessorCondition3";
+            this.textBoxProcessorCondition3.ReadOnly = true;
             this.textBoxProcessorCondition3.Size = new System.Drawing.Size(116, 20);
             this.textBoxProcessorCondition3.TabIndex = 61;
             // 
@@ -630,18 +640,19 @@
             this.pictureBoxProcessor3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxProcessor3.Location = new System.Drawing.Point(481, 379);
             this.pictureBoxProcessor3.Name = "pictureBoxProcessor3";
-            this.pictureBoxProcessor3.Size = new System.Drawing.Size(198, 202);
+            this.pictureBoxProcessor3.Size = new System.Drawing.Size(198, 216);
             this.pictureBoxProcessor3.TabIndex = 56;
             this.pictureBoxProcessor3.TabStop = false;
             // 
             // buttonUpdateProcessor4
             // 
-            this.buttonUpdateProcessor4.Location = new System.Drawing.Point(839, 554);
+            this.buttonUpdateProcessor4.Location = new System.Drawing.Point(839, 568);
             this.buttonUpdateProcessor4.Name = "buttonUpdateProcessor4";
             this.buttonUpdateProcessor4.Size = new System.Drawing.Size(48, 23);
             this.buttonUpdateProcessor4.TabIndex = 77;
             this.buttonUpdateProcessor4.Text = "update";
             this.buttonUpdateProcessor4.UseVisualStyleBackColor = true;
+            this.buttonUpdateProcessor4.Click += new System.EventHandler(this.buttonUpdateProcessor4_Click);
             // 
             // vArrow5
             // 
@@ -654,7 +665,7 @@
             // 
             // progressBarProcessor4
             // 
-            this.progressBarProcessor4.Location = new System.Drawing.Point(717, 534);
+            this.progressBarProcessor4.Location = new System.Drawing.Point(717, 545);
             this.progressBarProcessor4.Name = "progressBarProcessor4";
             this.progressBarProcessor4.Size = new System.Drawing.Size(170, 17);
             this.progressBarProcessor4.TabIndex = 75;
@@ -664,7 +675,8 @@
             this.textBoxProcessorCurrentTask4.Location = new System.Drawing.Point(717, 488);
             this.textBoxProcessorCurrentTask4.Multiline = true;
             this.textBoxProcessorCurrentTask4.Name = "textBoxProcessorCurrentTask4";
-            this.textBoxProcessorCurrentTask4.Size = new System.Drawing.Size(170, 40);
+            this.textBoxProcessorCurrentTask4.ReadOnly = true;
+            this.textBoxProcessorCurrentTask4.Size = new System.Drawing.Size(170, 51);
             this.textBoxProcessorCurrentTask4.TabIndex = 74;
             // 
             // labelProcessorCurrentTask4
@@ -681,6 +693,7 @@
             // 
             this.textBoxProcessorCondition4.Location = new System.Drawing.Point(771, 442);
             this.textBoxProcessorCondition4.Name = "textBoxProcessorCondition4";
+            this.textBoxProcessorCondition4.ReadOnly = true;
             this.textBoxProcessorCondition4.Size = new System.Drawing.Size(116, 20);
             this.textBoxProcessorCondition4.TabIndex = 72;
             // 
@@ -730,18 +743,19 @@
             this.pictureBoxProcessor4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxProcessor4.Location = new System.Drawing.Point(702, 379);
             this.pictureBoxProcessor4.Name = "pictureBoxProcessor4";
-            this.pictureBoxProcessor4.Size = new System.Drawing.Size(198, 202);
+            this.pictureBoxProcessor4.Size = new System.Drawing.Size(198, 216);
             this.pictureBoxProcessor4.TabIndex = 67;
             this.pictureBoxProcessor4.TabStop = false;
             // 
             // buttonUpdateProcessor5
             // 
-            this.buttonUpdateProcessor5.Location = new System.Drawing.Point(1061, 554);
+            this.buttonUpdateProcessor5.Location = new System.Drawing.Point(1061, 568);
             this.buttonUpdateProcessor5.Name = "buttonUpdateProcessor5";
             this.buttonUpdateProcessor5.Size = new System.Drawing.Size(48, 23);
             this.buttonUpdateProcessor5.TabIndex = 88;
             this.buttonUpdateProcessor5.Text = "update";
             this.buttonUpdateProcessor5.UseVisualStyleBackColor = true;
+            this.buttonUpdateProcessor5.Click += new System.EventHandler(this.buttonUpdateProcessor5_Click);
             // 
             // vArrow6
             // 
@@ -754,7 +768,7 @@
             // 
             // progressBarProcessor5
             // 
-            this.progressBarProcessor5.Location = new System.Drawing.Point(939, 534);
+            this.progressBarProcessor5.Location = new System.Drawing.Point(939, 545);
             this.progressBarProcessor5.Name = "progressBarProcessor5";
             this.progressBarProcessor5.Size = new System.Drawing.Size(170, 17);
             this.progressBarProcessor5.TabIndex = 86;
@@ -764,7 +778,8 @@
             this.textBoxProcessorCurrentTask5.Location = new System.Drawing.Point(939, 488);
             this.textBoxProcessorCurrentTask5.Multiline = true;
             this.textBoxProcessorCurrentTask5.Name = "textBoxProcessorCurrentTask5";
-            this.textBoxProcessorCurrentTask5.Size = new System.Drawing.Size(170, 40);
+            this.textBoxProcessorCurrentTask5.ReadOnly = true;
+            this.textBoxProcessorCurrentTask5.Size = new System.Drawing.Size(170, 51);
             this.textBoxProcessorCurrentTask5.TabIndex = 85;
             // 
             // labelProcessorCurrentTask5
@@ -781,6 +796,7 @@
             // 
             this.textBoxProcessorCondition5.Location = new System.Drawing.Point(993, 442);
             this.textBoxProcessorCondition5.Name = "textBoxProcessorCondition5";
+            this.textBoxProcessorCondition5.ReadOnly = true;
             this.textBoxProcessorCondition5.Size = new System.Drawing.Size(116, 20);
             this.textBoxProcessorCondition5.TabIndex = 83;
             // 
@@ -830,7 +846,7 @@
             this.pictureBoxProcessor5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxProcessor5.Location = new System.Drawing.Point(923, 379);
             this.pictureBoxProcessor5.Name = "pictureBoxProcessor5";
-            this.pictureBoxProcessor5.Size = new System.Drawing.Size(198, 202);
+            this.pictureBoxProcessor5.Size = new System.Drawing.Size(198, 216);
             this.pictureBoxProcessor5.TabIndex = 78;
             this.pictureBoxProcessor5.TabStop = false;
             // 

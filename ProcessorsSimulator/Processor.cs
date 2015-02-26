@@ -23,7 +23,9 @@ namespace ProcessorsSimulator
         public processor_condition condition { get; set; }
         public Task currentTask { get; set; }
 
-        public delegate void NewProcessStartedHandler(int id, int maximum);
+        public delegate void ProcessEndedHandler(int id ,processor_condition cond);
+        public event ProcessEndedHandler ProcessEnded;
+        public delegate void NewProcessStartedHandler(int id, int maximum, Task currentTask, processor_condition cond);
         public event NewProcessStartedHandler NewProcessStarted;
         public delegate void ProgressChangedHandler(int id, int progress);
         public event ProgressChangedHandler ProgressChanged;
@@ -35,7 +37,7 @@ namespace ProcessorsSimulator
                 if (condition == processor_condition.processing && currentTask != null)
                 {
                     double processingTime = 10000;
-                    if (NewProcessStarted != null) NewProcessStarted(this.id, (int)Math.Round(processingTime, MidpointRounding.AwayFromZero));
+                    if (NewProcessStarted != null) NewProcessStarted(this.id, (int)Math.Round(processingTime, MidpointRounding.AwayFromZero) , currentTask, condition);
 
                     Debug.Print("Processing task (operationsAmount=" + currentTask.operationsAmont.ToString() + 
                                 ", supportedProcessors=" + currentTask.getSupportedProcessors() + ")");
@@ -45,6 +47,10 @@ namespace ProcessorsSimulator
                         Thread.Sleep(10);
                     }
                     condition = processor_condition.waitingForTask; // work done, processor is free
+                    if (ProcessEnded != null)
+                    {
+                        ProcessEnded(this.id , condition);
+                    }
                 }
                 else
                 {

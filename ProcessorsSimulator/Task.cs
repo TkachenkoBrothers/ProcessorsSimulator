@@ -20,5 +20,9 @@ namespace ProcessorsSimulator
             }
             return str.Remove(str.Length - 1, 1); 
         }
+        public override string ToString()
+        {
+            return "Task id :" + id.ToString() + " \t\t\t" + "Operations amount : " + operationsAmont.ToString() +"\t\t" + "Supported processors : " + getSupportedProcessors();
+        }
     }
 }
