@@ -22,6 +22,7 @@ C:\Users\Vladymyr\Documents\MultipleProcessorsSimulatorSystem\ProcessorsSimulato
 C:\Users\Vladymyr\Documents\MultipleProcessorsSimulatorSystem\ProcessorsSimulator\bin\Debug\PriborControlLibrary.pdb
 C:\Users\Vladymyr\Documents\MultipleProcessorsSimulatorSystem\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.exe
 C:\Users\Vladymyr\Documents\MultipleProcessorsSimulatorSystem\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.pdb
+<<<<<<< HEAD
 D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\bin\Debug\ProcessorsSimulator.exe.config
 D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.exe
 D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.pdb
@@ -34,3 +35,16 @@ D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\obj\Debug\Processor
 D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.Main.resources
 D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.Properties.Resources.resources
 D:\CompSys\ProcessorSimulatorBrothersGit\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.csproj.GenerateResource.Cache
+=======
+C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\bin\Debug\ProcessorsSimulator.exe.config
+C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.exe
+C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.pdb
+C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\bin\Debug\ProcessorsSimulator.exe
+C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\bin\Debug\ProcessorsSimulator.pdb
+C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\bin\Debug\PriborControlLibrary.dll
+C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\bin\Debug\PriborControlLibrary.pdb
+C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.csprojResolveAssemblyReference.cache
+C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.Main.resources
+C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.Properties.Resources.resources
+C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.csproj.GenerateResource.Cache
+>>>>>>> b0139b013417625d7461c485ceb8cbb66cf46806
