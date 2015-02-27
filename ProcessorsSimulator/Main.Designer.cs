@@ -106,6 +106,10 @@
             this.labelProcessor5 = new System.Windows.Forms.Label();
             this.pictureBoxProcessor5 = new System.Windows.Forms.PictureBox();
             this.buttonStop = new System.Windows.Forms.Button();
+            this.groupBoxResults = new System.Windows.Forms.GroupBox();
+            this.labelTotalTime = new System.Windows.Forms.Label();
+            this.labelProcessedTasks = new System.Windows.Forms.Label();
+            this.labelTotalOperations = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGenerator)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGeneratorIndicator)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxManagerIndicator)).BeginInit();
@@ -115,13 +119,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProcessor3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProcessor4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProcessor5)).BeginInit();
+            this.groupBoxResults.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBoxGenerator
             // 
             this.pictureBoxGenerator.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pictureBoxGenerator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxGenerator.Location = new System.Drawing.Point(200, 12);
+            this.pictureBoxGenerator.Location = new System.Drawing.Point(113, 12);
             this.pictureBoxGenerator.Name = "pictureBoxGenerator";
             this.pictureBoxGenerator.Size = new System.Drawing.Size(198, 257);
             this.pictureBoxGenerator.TabIndex = 0;
@@ -132,7 +137,7 @@
             this.labelGenerator.AutoSize = true;
             this.labelGenerator.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.labelGenerator.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelGenerator.Location = new System.Drawing.Point(259, 23);
+            this.labelGenerator.Location = new System.Drawing.Point(172, 23);
             this.labelGenerator.Name = "labelGenerator";
             this.labelGenerator.Size = new System.Drawing.Size(84, 18);
             this.labelGenerator.TabIndex = 1;
@@ -142,7 +147,7 @@
             // 
             this.labelSleepIndex.AutoSize = true;
             this.labelSleepIndex.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelSleepIndex.Location = new System.Drawing.Point(213, 57);
+            this.labelSleepIndex.Location = new System.Drawing.Point(126, 57);
             this.labelSleepIndex.Name = "labelSleepIndex";
             this.labelSleepIndex.Size = new System.Drawing.Size(62, 13);
             this.labelSleepIndex.TabIndex = 2;
@@ -152,7 +157,7 @@
             // 
             this.labelScopeFrom.AutoSize = true;
             this.labelScopeFrom.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelScopeFrom.Location = new System.Drawing.Point(213, 84);
+            this.labelScopeFrom.Location = new System.Drawing.Point(126, 84);
             this.labelScopeFrom.Name = "labelScopeFrom";
             this.labelScopeFrom.Size = new System.Drawing.Size(61, 13);
             this.labelScopeFrom.TabIndex = 3;
@@ -162,7 +167,7 @@
             // 
             this.labelScopeTo.AutoSize = true;
             this.labelScopeTo.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelScopeTo.Location = new System.Drawing.Point(319, 84);
+            this.labelScopeTo.Location = new System.Drawing.Point(232, 84);
             this.labelScopeTo.Name = "labelScopeTo";
             this.labelScopeTo.Size = new System.Drawing.Size(16, 13);
             this.labelScopeTo.TabIndex = 4;
@@ -172,7 +177,7 @@
             // 
             this.labelWorkingTime.AutoSize = true;
             this.labelWorkingTime.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelWorkingTime.Location = new System.Drawing.Point(213, 113);
+            this.labelWorkingTime.Location = new System.Drawing.Point(126, 113);
             this.labelWorkingTime.Name = "labelWorkingTime";
             this.labelWorkingTime.Size = new System.Drawing.Size(69, 13);
             this.labelWorkingTime.TabIndex = 5;
@@ -182,7 +187,7 @@
             // 
             this.labelGeneratorIndicator.AutoSize = true;
             this.labelGeneratorIndicator.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelGeneratorIndicator.Location = new System.Drawing.Point(273, 205);
+            this.labelGeneratorIndicator.Location = new System.Drawing.Point(186, 205);
             this.labelGeneratorIndicator.Name = "labelGeneratorIndicator";
             this.labelGeneratorIndicator.Size = new System.Drawing.Size(48, 13);
             this.labelGeneratorIndicator.TabIndex = 10;
@@ -192,7 +197,7 @@
             // 
             this.pictureBoxGeneratorIndicator.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pictureBoxGeneratorIndicator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxGeneratorIndicator.Location = new System.Drawing.Point(278, 218);
+            this.pictureBoxGeneratorIndicator.Location = new System.Drawing.Point(191, 218);
             this.pictureBoxGeneratorIndicator.Name = "pictureBoxGeneratorIndicator";
             this.pictureBoxGeneratorIndicator.Size = new System.Drawing.Size(37, 35);
             this.pictureBoxGeneratorIndicator.TabIndex = 11;
@@ -200,17 +205,18 @@
             // 
             // buttonGeneratorUpdate
             // 
-            this.buttonGeneratorUpdate.Location = new System.Drawing.Point(333, 230);
+            this.buttonGeneratorUpdate.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.buttonGeneratorUpdate.Location = new System.Drawing.Point(246, 230);
             this.buttonGeneratorUpdate.Name = "buttonGeneratorUpdate";
             this.buttonGeneratorUpdate.Size = new System.Drawing.Size(48, 23);
             this.buttonGeneratorUpdate.TabIndex = 12;
             this.buttonGeneratorUpdate.Text = "update";
-            this.buttonGeneratorUpdate.UseVisualStyleBackColor = true;
+            this.buttonGeneratorUpdate.UseVisualStyleBackColor = false;
             this.buttonGeneratorUpdate.Click += new System.EventHandler(this.buttonGeneratorUpdate_Click);
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(676, 230);
+            this.buttonStart.Location = new System.Drawing.Point(589, 230);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(75, 23);
             this.buttonStart.TabIndex = 13;
@@ -222,7 +228,7 @@
             // 
             this.pictureBoxManagerIndicator.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pictureBoxManagerIndicator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxManagerIndicator.Location = new System.Drawing.Point(500, 218);
+            this.pictureBoxManagerIndicator.Location = new System.Drawing.Point(413, 218);
             this.pictureBoxManagerIndicator.Name = "pictureBoxManagerIndicator";
             this.pictureBoxManagerIndicator.Size = new System.Drawing.Size(37, 35);
             this.pictureBoxManagerIndicator.TabIndex = 25;
@@ -232,7 +238,7 @@
             // 
             this.labelManagerIndicator.AutoSize = true;
             this.labelManagerIndicator.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelManagerIndicator.Location = new System.Drawing.Point(495, 205);
+            this.labelManagerIndicator.Location = new System.Drawing.Point(408, 205);
             this.labelManagerIndicator.Name = "labelManagerIndicator";
             this.labelManagerIndicator.Size = new System.Drawing.Size(48, 13);
             this.labelManagerIndicator.TabIndex = 24;
@@ -243,7 +249,7 @@
             this.labelManager.AutoSize = true;
             this.labelManager.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.labelManager.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelManager.Location = new System.Drawing.Point(640, 23);
+            this.labelManager.Location = new System.Drawing.Point(553, 23);
             this.labelManager.Name = "labelManager";
             this.labelManager.Size = new System.Drawing.Size(73, 18);
             this.labelManager.TabIndex = 15;
@@ -253,7 +259,7 @@
             // 
             this.pictureBoxManager.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.pictureBoxManager.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxManager.Location = new System.Drawing.Point(478, 12);
+            this.pictureBoxManager.Location = new System.Drawing.Point(391, 12);
             this.pictureBoxManager.Name = "pictureBoxManager";
             this.pictureBoxManager.Size = new System.Drawing.Size(387, 257);
             this.pictureBoxManager.TabIndex = 14;
@@ -265,7 +271,7 @@
             this.richTextBoxManagerQueue.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.richTextBoxManagerQueue.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBoxManagerQueue.ForeColor = System.Drawing.SystemColors.Info;
-            this.richTextBoxManagerQueue.Location = new System.Drawing.Point(500, 51);
+            this.richTextBoxManagerQueue.Location = new System.Drawing.Point(413, 51);
             this.richTextBoxManagerQueue.Name = "richTextBoxManagerQueue";
             this.richTextBoxManagerQueue.ReadOnly = true;
             this.richTextBoxManagerQueue.Size = new System.Drawing.Size(346, 151);
@@ -275,7 +281,7 @@
             // hArrow1
             // 
             this.hArrow1.ArrowType = ArrowT.none;
-            this.hArrow1.Location = new System.Drawing.Point(397, 131);
+            this.hArrow1.Location = new System.Drawing.Point(310, 131);
             this.hArrow1.Margin = new System.Windows.Forms.Padding(0);
             this.hArrow1.Name = "hArrow1";
             this.hArrow1.Size = new System.Drawing.Size(81, 10);
@@ -284,37 +290,41 @@
             // 
             // maskedTextBoxSleepIndex
             // 
-            this.maskedTextBoxSleepIndex.Location = new System.Drawing.Point(276, 54);
+            this.maskedTextBoxSleepIndex.Location = new System.Drawing.Point(189, 54);
             this.maskedTextBoxSleepIndex.Mask = "0.0000";
             this.maskedTextBoxSleepIndex.Name = "maskedTextBoxSleepIndex";
             this.maskedTextBoxSleepIndex.Size = new System.Drawing.Size(42, 20);
             this.maskedTextBoxSleepIndex.TabIndex = 28;
+            this.maskedTextBoxSleepIndex.Click += new System.EventHandler(this.maskedTextBoxSleepIndex_Click);
             // 
             // maskedTextBoxScopeFrom
             // 
-            this.maskedTextBoxScopeFrom.Location = new System.Drawing.Point(276, 81);
+            this.maskedTextBoxScopeFrom.Location = new System.Drawing.Point(189, 81);
             this.maskedTextBoxScopeFrom.Mask = "00000";
             this.maskedTextBoxScopeFrom.Name = "maskedTextBoxScopeFrom";
             this.maskedTextBoxScopeFrom.Size = new System.Drawing.Size(41, 20);
             this.maskedTextBoxScopeFrom.TabIndex = 29;
             this.maskedTextBoxScopeFrom.ValidatingType = typeof(int);
+            this.maskedTextBoxScopeFrom.Click += new System.EventHandler(this.maskedTextBoxScopeFrom_Click);
             // 
             // maskedTextBoxScopeTo
             // 
-            this.maskedTextBoxScopeTo.Location = new System.Drawing.Point(333, 81);
+            this.maskedTextBoxScopeTo.Location = new System.Drawing.Point(246, 81);
             this.maskedTextBoxScopeTo.Mask = "00000";
             this.maskedTextBoxScopeTo.Name = "maskedTextBoxScopeTo";
             this.maskedTextBoxScopeTo.Size = new System.Drawing.Size(41, 20);
             this.maskedTextBoxScopeTo.TabIndex = 30;
             this.maskedTextBoxScopeTo.ValidatingType = typeof(int);
+            this.maskedTextBoxScopeTo.Click += new System.EventHandler(this.maskedTextBoxScopeTo_Click);
             // 
             // maskedTextBoxWorkingTime
             // 
-            this.maskedTextBoxWorkingTime.Location = new System.Drawing.Point(288, 107);
+            this.maskedTextBoxWorkingTime.Location = new System.Drawing.Point(201, 107);
             this.maskedTextBoxWorkingTime.Mask = "0000000";
             this.maskedTextBoxWorkingTime.Name = "maskedTextBoxWorkingTime";
             this.maskedTextBoxWorkingTime.Size = new System.Drawing.Size(55, 20);
             this.maskedTextBoxWorkingTime.TabIndex = 31;
+            this.maskedTextBoxWorkingTime.Click += new System.EventHandler(this.maskedTextBoxWorkingTime_Click);
             // 
             // labelProcessor1
             // 
@@ -355,6 +365,7 @@
             this.maskedTextBoxProcessorPower1.Size = new System.Drawing.Size(41, 20);
             this.maskedTextBoxProcessorPower1.TabIndex = 35;
             this.maskedTextBoxProcessorPower1.ValidatingType = typeof(int);
+            this.maskedTextBoxProcessorPower1.Click += new System.EventHandler(this.maskedTextBoxProcessorPower1_Click);
             // 
             // labelProcessorCondition1
             // 
@@ -390,7 +401,7 @@
             // textBoxProcessorCurrentTask1
             // 
             this.textBoxProcessorCurrentTask1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.textBoxProcessorCurrentTask1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxProcessorCurrentTask1.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxProcessorCurrentTask1.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCurrentTask1.Location = new System.Drawing.Point(51, 488);
             this.textBoxProcessorCurrentTask1.Multiline = true;
@@ -419,7 +430,7 @@
             // vArrow1
             // 
             this.vArrow1.ArrowType = ArrowT.none;
-            this.vArrow1.Location = new System.Drawing.Point(669, 268);
+            this.vArrow1.Location = new System.Drawing.Point(582, 268);
             this.vArrow1.Name = "vArrow1";
             this.vArrow1.Size = new System.Drawing.Size(10, 49);
             this.vArrow1.TabIndex = 42;
@@ -473,7 +484,7 @@
             // textBoxProcessorCurrentTask2
             // 
             this.textBoxProcessorCurrentTask2.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.textBoxProcessorCurrentTask2.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProcessorCurrentTask2.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxProcessorCurrentTask2.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCurrentTask2.Location = new System.Drawing.Point(274, 488);
             this.textBoxProcessorCurrentTask2.Multiline = true;
@@ -521,6 +532,7 @@
             this.maskedTextBoxProcessorPower2.Size = new System.Drawing.Size(41, 20);
             this.maskedTextBoxProcessorPower2.TabIndex = 48;
             this.maskedTextBoxProcessorPower2.ValidatingType = typeof(int);
+            this.maskedTextBoxProcessorPower2.Click += new System.EventHandler(this.maskedTextBoxProcessorPower2_Click);
             // 
             // labelProcessorPower2
             // 
@@ -578,12 +590,11 @@
             this.progressBarProcessor3.Name = "progressBarProcessor3";
             this.progressBarProcessor3.Size = new System.Drawing.Size(170, 17);
             this.progressBarProcessor3.TabIndex = 64;
-            this.progressBarProcessor3.Click += new System.EventHandler(this.progressBarProcessor3_Click);
             // 
             // textBoxProcessorCurrentTask3
             // 
             this.textBoxProcessorCurrentTask3.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.textBoxProcessorCurrentTask3.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProcessorCurrentTask3.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxProcessorCurrentTask3.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCurrentTask3.Location = new System.Drawing.Point(496, 488);
             this.textBoxProcessorCurrentTask3.Multiline = true;
@@ -631,6 +642,7 @@
             this.maskedTextBoxProcessorPower3.Size = new System.Drawing.Size(41, 20);
             this.maskedTextBoxProcessorPower3.TabIndex = 59;
             this.maskedTextBoxProcessorPower3.ValidatingType = typeof(int);
+            this.maskedTextBoxProcessorPower3.Click += new System.EventHandler(this.maskedTextBoxProcessorPower3_Click);
             // 
             // labelProcessorPower3
             // 
@@ -692,7 +704,7 @@
             // textBoxProcessorCurrentTask4
             // 
             this.textBoxProcessorCurrentTask4.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.textBoxProcessorCurrentTask4.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProcessorCurrentTask4.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxProcessorCurrentTask4.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCurrentTask4.Location = new System.Drawing.Point(717, 488);
             this.textBoxProcessorCurrentTask4.Multiline = true;
@@ -740,6 +752,7 @@
             this.maskedTextBoxProcessorPower4.Size = new System.Drawing.Size(41, 20);
             this.maskedTextBoxProcessorPower4.TabIndex = 70;
             this.maskedTextBoxProcessorPower4.ValidatingType = typeof(int);
+            this.maskedTextBoxProcessorPower4.Click += new System.EventHandler(this.maskedTextBoxProcessorPower4_Click);
             // 
             // labelProcessorPower4
             // 
@@ -801,7 +814,7 @@
             // textBoxProcessorCurrentTask5
             // 
             this.textBoxProcessorCurrentTask5.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.textBoxProcessorCurrentTask5.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxProcessorCurrentTask5.Font = new System.Drawing.Font("Lucida Console", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBoxProcessorCurrentTask5.ForeColor = System.Drawing.SystemColors.Info;
             this.textBoxProcessorCurrentTask5.Location = new System.Drawing.Point(939, 488);
             this.textBoxProcessorCurrentTask5.Multiline = true;
@@ -849,6 +862,7 @@
             this.maskedTextBoxProcessorPower5.Size = new System.Drawing.Size(41, 20);
             this.maskedTextBoxProcessorPower5.TabIndex = 81;
             this.maskedTextBoxProcessorPower5.ValidatingType = typeof(int);
+            this.maskedTextBoxProcessorPower5.Click += new System.EventHandler(this.maskedTextBoxProcessorPower5_Click);
             // 
             // labelProcessorPower5
             // 
@@ -883,7 +897,7 @@
             // 
             // buttonStop
             // 
-            this.buttonStop.Location = new System.Drawing.Point(771, 230);
+            this.buttonStop.Location = new System.Drawing.Point(684, 230);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(75, 23);
             this.buttonStop.TabIndex = 89;
@@ -891,12 +905,58 @@
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
+            // groupBoxResults
+            // 
+            this.groupBoxResults.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBoxResults.Controls.Add(this.labelTotalOperations);
+            this.groupBoxResults.Controls.Add(this.labelProcessedTasks);
+            this.groupBoxResults.Controls.Add(this.labelTotalTime);
+            this.groupBoxResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBoxResults.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBoxResults.Location = new System.Drawing.Point(864, 12);
+            this.groupBoxResults.Name = "groupBoxResults";
+            this.groupBoxResults.Size = new System.Drawing.Size(200, 257);
+            this.groupBoxResults.TabIndex = 90;
+            this.groupBoxResults.TabStop = false;
+            this.groupBoxResults.Text = "Results";
+            // 
+            // labelTotalTime
+            // 
+            this.labelTotalTime.AutoSize = true;
+            this.labelTotalTime.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTotalTime.Location = new System.Drawing.Point(6, 46);
+            this.labelTotalTime.Name = "labelTotalTime";
+            this.labelTotalTime.Size = new System.Drawing.Size(75, 16);
+            this.labelTotalTime.TabIndex = 0;
+            this.labelTotalTime.Text = "Total time:";
+            // 
+            // labelProcessedTasks
+            // 
+            this.labelProcessedTasks.AutoSize = true;
+            this.labelProcessedTasks.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelProcessedTasks.Location = new System.Drawing.Point(6, 73);
+            this.labelProcessedTasks.Name = "labelProcessedTasks";
+            this.labelProcessedTasks.Size = new System.Drawing.Size(109, 16);
+            this.labelProcessedTasks.TabIndex = 1;
+            this.labelProcessedTasks.Text = "Processed tasks:";
+            // 
+            // labelTotalOperations
+            // 
+            this.labelTotalOperations.AutoSize = true;
+            this.labelTotalOperations.Font = new System.Drawing.Font("Georgia", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTotalOperations.Location = new System.Drawing.Point(6, 101);
+            this.labelTotalOperations.Name = "labelTotalOperations";
+            this.labelTotalOperations.Size = new System.Drawing.Size(114, 16);
+            this.labelTotalOperations.TabIndex = 2;
+            this.labelTotalOperations.Text = "Total operations:";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1148, 631);
+            this.Controls.Add(this.groupBoxResults);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.buttonUpdateProcessor5);
             this.Controls.Add(this.vArrow6);
@@ -987,6 +1047,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProcessor3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProcessor4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProcessor5)).EndInit();
+            this.groupBoxResults.ResumeLayout(false);
+            this.groupBoxResults.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1072,6 +1134,10 @@
         private System.Windows.Forms.PictureBox pictureBoxProcessor5;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.ProgressBar progressBarProcessor1;
+        private System.Windows.Forms.GroupBox groupBoxResults;
+        private System.Windows.Forms.Label labelTotalTime;
+        private System.Windows.Forms.Label labelTotalOperations;
+        private System.Windows.Forms.Label labelProcessedTasks;
 
         
     }

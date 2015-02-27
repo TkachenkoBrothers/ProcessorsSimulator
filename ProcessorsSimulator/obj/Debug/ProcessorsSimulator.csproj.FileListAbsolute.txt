@@ -48,3 +48,14 @@ C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\obj\Debug\Pr
 C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.Properties.Resources.resources
 C:\Users\Vladymyr\Documents\ProcessorsSimulator\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.csproj.GenerateResource.Cache
 >>>>>>> b0139b013417625d7461c485ceb8cbb66cf46806
+C:\Users\Vladymyr\Downloads\ProcessorsSimulator-master (1)\ProcessorsSimulator-master\ProcessorsSimulator\bin\Debug\ProcessorsSimulator.exe.config
+C:\Users\Vladymyr\Downloads\ProcessorsSimulator-master (1)\ProcessorsSimulator-master\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.exe
+C:\Users\Vladymyr\Downloads\ProcessorsSimulator-master (1)\ProcessorsSimulator-master\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.pdb
+C:\Users\Vladymyr\Downloads\ProcessorsSimulator-master (1)\ProcessorsSimulator-master\ProcessorsSimulator\bin\Debug\ProcessorsSimulator.exe
+C:\Users\Vladymyr\Downloads\ProcessorsSimulator-master (1)\ProcessorsSimulator-master\ProcessorsSimulator\bin\Debug\ProcessorsSimulator.pdb
+C:\Users\Vladymyr\Downloads\ProcessorsSimulator-master (1)\ProcessorsSimulator-master\ProcessorsSimulator\bin\Debug\PriborControlLibrary.dll
+C:\Users\Vladymyr\Downloads\ProcessorsSimulator-master (1)\ProcessorsSimulator-master\ProcessorsSimulator\bin\Debug\PriborControlLibrary.pdb
+C:\Users\Vladymyr\Downloads\ProcessorsSimulator-master (1)\ProcessorsSimulator-master\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.csprojResolveAssemblyReference.cache
+C:\Users\Vladymyr\Downloads\ProcessorsSimulator-master (1)\ProcessorsSimulator-master\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.Main.resources
+C:\Users\Vladymyr\Downloads\ProcessorsSimulator-master (1)\ProcessorsSimulator-master\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.Properties.Resources.resources
+C:\Users\Vladymyr\Downloads\ProcessorsSimulator-master (1)\ProcessorsSimulator-master\ProcessorsSimulator\obj\Debug\ProcessorsSimulator.csproj.GenerateResource.Cache

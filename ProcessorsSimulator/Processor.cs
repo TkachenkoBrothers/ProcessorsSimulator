@@ -23,7 +23,7 @@ namespace ProcessorsSimulator
         public processor_condition condition { get; set; }
         public Task currentTask { get; set; }
 
-        public delegate void ProcessEndedHandler(int id ,processor_condition cond);
+        public delegate void ProcessEndedHandler(int id , processor_condition cond, int operationsAmount);
         public event ProcessEndedHandler ProcessEnded;
         public delegate void NewProcessStartedHandler(int id, int maximum, Task currentTask, processor_condition cond);
         public event NewProcessStartedHandler NewProcessStarted;
@@ -49,7 +49,7 @@ namespace ProcessorsSimulator
                     condition = processor_condition.waitingForTask; // work done, processor is free
                     if (ProcessEnded != null)
                     {
-                        ProcessEnded(this.id , condition);
+                        ProcessEnded(this.id , condition, currentTask.operationsAmont);
                     }
                 }
                 else

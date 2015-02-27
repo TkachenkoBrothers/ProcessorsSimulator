@@ -17,12 +17,18 @@ namespace ProcessorsSimulator
         private List<MaskedTextBox> processorsPowerList;
         private List<TextBox> processorsConditionList;
         private Manager manager;
+        private TimeCalculator timeCalculator;
+        private int totalProcesses;
+        private int totalOperations;
         public Main()
         {
             InitializeComponent();
             manager = new Manager();
+            timeCalculator = new TimeCalculator();
             ManageInterface();
             ProcessorsInterface();
+            totalProcesses = 0;
+            totalOperations = 0;
         }
       
         private void ManageInterface()
@@ -146,9 +152,10 @@ namespace ProcessorsSimulator
             }
         }
 
-        private void OnProcessEnded(int id, processor_condition condition)
+        private void OnProcessEnded(int id, processor_condition condition, int operationsAmount)
         {
-
+            totalProcesses++;
+            totalOperations += operationsAmount;
             switch (id)
             {
                 case 0:
@@ -253,6 +260,17 @@ namespace ProcessorsSimulator
             this.Invoke((MethodInvoker)delegate { this.buttonUpdateProcessor4.Enabled = true; });
             this.Invoke((MethodInvoker)delegate { this.buttonUpdateProcessor5.Enabled = true; });
             ResetProgressBarsValues();
+
+            this.Invoke((MethodInvoker)delegate { timeCalculator.SetSecondTime(); });
+
+            this.Invoke((MethodInvoker)delegate // show results
+            { 
+                  labelTotalTime.Text = "Total time: " + timeCalculator.TimeOfWork().ToString();
+                  labelProcessedTasks.Text = "Processed tasks: " + totalProcesses.ToString();
+                  labelTotalOperations.Text = "Total operations: " + totalOperations.ToString();
+            });
+
+
             this.manager.processors.All(p => { p.NewProcessStarted += OnNewProcessStarted; return true; }); // reload subscribes (because processors reloaded)
             this.manager.processors.All(p => { p.ProgressChanged += OnProgressChanged; return true; });
             this.manager.processors.All(p => { p.ProcessEnded += OnProcessEnded; return true; });
@@ -319,7 +337,8 @@ namespace ProcessorsSimulator
                 MessageBox.Show("Wrong argument. They must be greater than zero!");
                 return;
             }
-            
+
+            buttonGeneratorUpdate.BackColor = Color.FromName("InactiveCaption");
             this.maskedTextBoxSleepIndex.Text = manager.generator.indexSleepBetweenTask.ToString("0.0000");
             this.maskedTextBoxScopeFrom.Text = manager.generator.taskComplexityScope[0].ToString("00000");
             this.maskedTextBoxScopeTo.Text = manager.generator.taskComplexityScope[1].ToString("00000");
@@ -329,6 +348,9 @@ namespace ProcessorsSimulator
         private void buttonStart_Click(object sender, EventArgs e)
         {
             //manager.generator.workingTime = 5000; // reload
+            totalProcesses = 0;
+            totalOperations = 0;
+
             this.buttonStart.Enabled = false;
             this.buttonGeneratorUpdate.Enabled = false;
             this.buttonUpdateProcessor1.Enabled = false;
@@ -336,37 +358,44 @@ namespace ProcessorsSimulator
             this.buttonUpdateProcessor3.Enabled = false;
             this.buttonUpdateProcessor4.Enabled = false;
             this.buttonUpdateProcessor5.Enabled = false;
+
+            this.Invoke((MethodInvoker)delegate { labelTotalTime.Text = "Total time: ";
+            labelProcessedTasks.Text = "Processed tasks: ";
+            labelTotalOperations.Text = "Total operations: ";
+            }); // reset time, processed tasks
+
             manager.Manage();
+            timeCalculator.SetFirstTime();
         }
 
         private void buttonUpdateProcessor1_Click(object sender, EventArgs e)
         {
             manager.processors[0].power = int.Parse(maskedTextBoxProcessorPower1.Text);
+            buttonUpdateProcessor1.BackColor = Color.FromName("InactiveCaption");
         }
 
         private void buttonUpdateProcessor2_Click(object sender, EventArgs e)
         {
             manager.processors[1].power = int.Parse(maskedTextBoxProcessorPower2.Text);
+            buttonUpdateProcessor2.BackColor = Color.FromName("InactiveCaption");
         }
 
         private void buttonUpdateProcessor3_Click(object sender, EventArgs e)
         {
             manager.processors[2].power = int.Parse(maskedTextBoxProcessorPower3.Text);
+            buttonUpdateProcessor3.BackColor = Color.FromName("InactiveCaption");
         }
 
         private void buttonUpdateProcessor4_Click(object sender, EventArgs e)
         {
             manager.processors[3].power = int.Parse(maskedTextBoxProcessorPower4.Text);
+            buttonUpdateProcessor4.BackColor = Color.FromName("InactiveCaption");
         }
 
         private void buttonUpdateProcessor5_Click(object sender, EventArgs e)
         {
             manager.processors[4].power = int.Parse(maskedTextBoxProcessorPower5.Text);
-        }
-
-        private void progressBarProcessor3_Click(object sender, EventArgs e)
-        {
-
+            buttonUpdateProcessor5.BackColor = Color.FromName("InactiveCaption");
         }
 
         private void buttonStop_Click(object sender, EventArgs e)
@@ -376,6 +405,56 @@ namespace ProcessorsSimulator
             manager.processors.All(x => { x.condition = processor_condition.waitingForTask; return true; }); // forsly rise ProcessorsWorkDone event        
             //ResetProgressBarsValues();
             this.Invoke((MethodInvoker)delegate { richTextBoxManagerQueue.Text = ""; });
+            timeCalculator.SetSecondTime();
+        }
+
+      
+
+        private void maskedTextBoxSleepIndex_Click(object sender, EventArgs e)
+        {
+            buttonGeneratorUpdate.BackColor = Color.FromName("MenuHighlight");
+        }
+
+        private void maskedTextBoxScopeFrom_Click(object sender, EventArgs e)
+        {
+            buttonGeneratorUpdate.BackColor = Color.FromName("MenuHighlight");
+        }
+
+        private void maskedTextBoxScopeTo_Click(object sender, EventArgs e)
+        {
+            buttonGeneratorUpdate.BackColor = Color.FromName("MenuHighlight");
+        }
+
+        
+
+        private void maskedTextBoxWorkingTime_Click(object sender, EventArgs e)
+        {
+            buttonGeneratorUpdate.BackColor = Color.FromName("MenuHighlight");
+        }
+
+        private void maskedTextBoxProcessorPower1_Click(object sender, EventArgs e)
+        {
+            buttonUpdateProcessor1.BackColor = Color.FromName("MenuHighlight");
+        }
+
+        private void maskedTextBoxProcessorPower2_Click(object sender, EventArgs e)
+        {
+            buttonUpdateProcessor2.BackColor = Color.FromName("MenuHighlight");
+        }
+
+        private void maskedTextBoxProcessorPower3_Click(object sender, EventArgs e)
+        {
+            buttonUpdateProcessor3.BackColor = Color.FromName("MenuHighlight");
+        }
+
+        private void maskedTextBoxProcessorPower4_Click(object sender, EventArgs e)
+        {
+            buttonUpdateProcessor4.BackColor = Color.FromName("MenuHighlight");
+        }
+
+        private void maskedTextBoxProcessorPower5_Click(object sender, EventArgs e)
+        {
+            buttonUpdateProcessor5.BackColor = Color.FromName("MenuHighlight");
         }
     }
 }
