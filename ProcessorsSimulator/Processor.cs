@@ -14,7 +14,7 @@ namespace ProcessorsSimulator
     {
         public Processor()
         {
-            power = 100; // default
+            power = 50; // default
             condition = processor_condition.waitingForTask;
             currentTask = null; 
         }
@@ -36,15 +36,15 @@ namespace ProcessorsSimulator
             {
                 if (condition == processor_condition.processing && currentTask != null)
                 {
-                    double processingTime = 10000;
+                    double processingTime = currentTask.operationsAmont / power;
                     if (NewProcessStarted != null) NewProcessStarted(this.id, (int)Math.Round(processingTime, MidpointRounding.AwayFromZero) , currentTask, condition);
 
                     Debug.Print("Processing task (operationsAmount=" + currentTask.operationsAmont.ToString() + 
                                 ", supportedProcessors=" + currentTask.getSupportedProcessors() + ")");
-                    for (int i = 0; i < processingTime; i += (int) Math.Round(processingTime / 1000, MidpointRounding.AwayFromZero)) // TODO
+                    for (int i = 0; i < processingTime; i += 1) // TODO
                     {
                         if (ProgressChanged != null) ProgressChanged(this.id, i);
-                        Thread.Sleep(10);
+                        Thread.Sleep(20);
                     }
                     condition = processor_condition.waitingForTask; // work done, processor is free
                     if (ProcessEnded != null)
@@ -54,7 +54,7 @@ namespace ProcessorsSimulator
                 }
                 else
                 {
-                    Thread.Sleep(50);
+                    Thread.Sleep(20);
                 }
                     
             } 

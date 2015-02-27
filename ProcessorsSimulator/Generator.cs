@@ -13,8 +13,8 @@ namespace ProcessorsSimulator
         public Generator()
         {
             indexSleepBetweenTask = 0.05; //default, should be in range 0..1
-            taskComplexityScope = new int[2] { 300, 1000 }; //default
-            workingTime = 5000;
+            taskComplexityScope = new int[2] { 3000, 10000 }; //default
+            workingTime = 10000;
         }
         public double indexSleepBetweenTask { get; set; }
         public int workingTime { get; set; }
