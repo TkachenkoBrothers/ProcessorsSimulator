@@ -106,10 +106,10 @@
             this.labelProcessor5 = new System.Windows.Forms.Label();
             this.pictureBoxProcessor5 = new System.Windows.Forms.PictureBox();
             this.buttonStop = new System.Windows.Forms.Button();
-            this.groupBoxResults = new System.Windows.Forms.GroupBox();
             this.labelTotalTime = new System.Windows.Forms.Label();
             this.labelProcessedTasks = new System.Windows.Forms.Label();
             this.labelTotalOperations = new System.Windows.Forms.Label();
+            this.groupBoxResults = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGenerator)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGeneratorIndicator)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxManagerIndicator)).BeginInit();
@@ -905,21 +905,6 @@
             this.buttonStop.UseVisualStyleBackColor = true;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
-            // groupBoxResults
-            // 
-            this.groupBoxResults.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.groupBoxResults.Controls.Add(this.labelTotalOperations);
-            this.groupBoxResults.Controls.Add(this.labelProcessedTasks);
-            this.groupBoxResults.Controls.Add(this.labelTotalTime);
-            this.groupBoxResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.groupBoxResults.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBoxResults.Location = new System.Drawing.Point(864, 12);
-            this.groupBoxResults.Name = "groupBoxResults";
-            this.groupBoxResults.Size = new System.Drawing.Size(200, 257);
-            this.groupBoxResults.TabIndex = 90;
-            this.groupBoxResults.TabStop = false;
-            this.groupBoxResults.Text = "Results";
-            // 
             // labelTotalTime
             // 
             this.labelTotalTime.AutoSize = true;
@@ -949,6 +934,21 @@
             this.labelTotalOperations.Size = new System.Drawing.Size(114, 16);
             this.labelTotalOperations.TabIndex = 2;
             this.labelTotalOperations.Text = "Total operations:";
+            // 
+            // groupBoxResults
+            // 
+            this.groupBoxResults.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBoxResults.Controls.Add(this.labelTotalOperations);
+            this.groupBoxResults.Controls.Add(this.labelProcessedTasks);
+            this.groupBoxResults.Controls.Add(this.labelTotalTime);
+            this.groupBoxResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.groupBoxResults.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBoxResults.Location = new System.Drawing.Point(864, 15);
+            this.groupBoxResults.Name = "groupBoxResults";
+            this.groupBoxResults.Size = new System.Drawing.Size(200, 254);
+            this.groupBoxResults.TabIndex = 90;
+            this.groupBoxResults.TabStop = false;
+            this.groupBoxResults.Text = "Results";
             // 
             // Main
             // 
@@ -1134,10 +1134,10 @@
         private System.Windows.Forms.PictureBox pictureBoxProcessor5;
         private System.Windows.Forms.Button buttonStop;
         private System.Windows.Forms.ProgressBar progressBarProcessor1;
-        private System.Windows.Forms.GroupBox groupBoxResults;
         private System.Windows.Forms.Label labelTotalTime;
-        private System.Windows.Forms.Label labelTotalOperations;
         private System.Windows.Forms.Label labelProcessedTasks;
+        private System.Windows.Forms.Label labelTotalOperations;
+        private System.Windows.Forms.GroupBox groupBoxResults;
 
         
     }
