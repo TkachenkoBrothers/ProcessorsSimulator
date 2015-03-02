@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProcessorsSimulator
 {
-    class Task
+    class Task : IComparable<Task>
     {
         public int id { get; set; }
         public int operationsAmont { get; set; }
@@ -24,5 +24,18 @@ namespace ProcessorsSimulator
         {
             return "Task id :" + id.ToString() + " \t\t\t" + "Operations amount : " + operationsAmont.ToString() +"\t\t" + "Supported processors : " + getSupportedProcessors();
         }
+
+        public int CompareTo(Task task)
+        {
+            if (task == null)
+            {
+                return 1;
+            }
+            else
+            {
+                return this.operationsAmont.CompareTo(task.operationsAmont);
+            }
+        }
+
     }
 }
