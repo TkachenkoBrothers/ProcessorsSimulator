@@ -20,15 +20,17 @@ namespace ProcessorsSimulator
         private TimeCalculator timeCalculator;
         private int totalProcesses;
         private int totalOperations;
+        private string method;
         public Main()
         {
             InitializeComponent();
             manager = new Manager();
             timeCalculator = new TimeCalculator();
+            method = "";
             ManageInterface();
             ProcessorsInterface();
             totalProcesses = 0;
-            totalOperations = 0;
+            totalOperations = 0;     
         }
       
         private void ManageInterface()
@@ -347,25 +349,32 @@ namespace ProcessorsSimulator
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            //manager.generator.workingTime = 5000; // reload
-            totalProcesses = 0;
-            totalOperations = 0;
+            if (method != "")
+            {
+                //manager.generator.workingTime = 5000; // reload
+                totalProcesses = 0;
+                totalOperations = 0;
 
-            this.buttonStart.Enabled = false;
-            this.buttonGeneratorUpdate.Enabled = false;
-            this.buttonUpdateProcessor1.Enabled = false;
-            this.buttonUpdateProcessor2.Enabled = false;
-            this.buttonUpdateProcessor3.Enabled = false;
-            this.buttonUpdateProcessor4.Enabled = false;
-            this.buttonUpdateProcessor5.Enabled = false;
+                this.buttonStart.Enabled = false;
+                this.buttonGeneratorUpdate.Enabled = false;
+                this.buttonUpdateProcessor1.Enabled = false;
+                this.buttonUpdateProcessor2.Enabled = false;
+                this.buttonUpdateProcessor3.Enabled = false;
+                this.buttonUpdateProcessor4.Enabled = false;
+                this.buttonUpdateProcessor5.Enabled = false;
 
-            this.Invoke((MethodInvoker)delegate { labelTotalTime.Text = "Total time: ";
-            labelProcessedTasks.Text = "Processed tasks: ";
-            labelTotalOperations.Text = "Total operations: ";
-            }); // reset time, processed tasks
-
-            manager.Manage();
-            timeCalculator.SetFirstTime();
+                this.Invoke((MethodInvoker)delegate
+                {
+                    labelTotalTime.Text = "Total time: ";
+                    labelProcessedTasks.Text = "Processed tasks: ";
+                    labelTotalOperations.Text = "Total operations: ";
+                }); // reset time, processed tasks
+                manager.Manage(method);
+                timeCalculator.SetFirstTime();
+            }                
+            else
+                MessageBox.Show("Choose method");
+            
         }
 
         private void buttonUpdateProcessor1_Click(object sender, EventArgs e)
@@ -455,6 +464,21 @@ namespace ProcessorsSimulator
         private void maskedTextBoxProcessorPower5_Click(object sender, EventArgs e)
         {
             buttonUpdateProcessor5.BackColor = Color.FromName("MenuHighlight");
+        }
+
+        private void radioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rb = sender as RadioButton;
+
+            if (rb == null)
+            {
+                MessageBox.Show("Sender is not a RadioButton");
+                return;
+            }
+            if (rb.Checked)
+            {
+                method = rb.Text;
+            }
         }
     }
 }

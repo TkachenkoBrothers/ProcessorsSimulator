@@ -27,6 +27,7 @@ namespace ProcessorsSimulator
             this.ProcessorsWorkDone += OnProcessorsWorkDone;
             queueMutex = new Mutex();
             Debug.Print("Manager initialized");
+            method = "";
         }
 
         
@@ -39,16 +40,21 @@ namespace ProcessorsSimulator
         public Thread generatorThread;
         private Thread processorManager;
         private Thread[] processorsThreads;
+        private string method;
 
         public event EventHandler ProcessorsWorkDone;
         public event EventHandler QueueModified;
         public event EventHandler SendTaskToProcessor;
 
-        public void Manage()
+        public void Manage(string method)
         {
+            this.method = method;
             StartProcessors();
             StartGenerator();
-            StartManageProcessors();    
+            if (this.method == "FIFO")
+                StartManageProcessors();
+            else if (this.method == "Second")
+                SmartManageProcessors();
         }
         private void GetTask(Task task)
         {
@@ -62,16 +68,17 @@ namespace ProcessorsSimulator
 
         private void InitializeTaskQueues() 
         {
-            devisionQueue = new Queue<Task>[5];
+            devisionQueue = new Queue<Task>[5] { new Queue<Task>(), new Queue<Task>(), new Queue<Task>(), new Queue<Task>(), new Queue<Task>() };
         }
 
-        private void OnWorkDone(object sender, EventArgs e)
+        private void OnWorkDone(object sender, EventArgs e) //generator work done
         {
             //generatorThread.Abort();
             //processorManager.Abort();
             //AbortProcessors();
-            Debug.Print("Generator work is done.");        
-            CreateGeneratorThread();   
+            Debug.Print("Generator work is done."); // must execute BEFORE Starting SmartManageProcessors or devideTasks
+            CreateGeneratorThread(); // removes Start procedure for generator (100% stops calling taskQueue)
+            devideTasks();
         }
         //
         // reload threads when they finish work !!Attention: generator might finish his work before processors
@@ -921,9 +928,11 @@ namespace ProcessorsSimulator
 
             queueMutex.WaitOne();
                
-                    FormOneProcTaskQueues();
-                    FormTwoProcTaskQueues();
-                    FormThreeProcTaskQueues();
+                FormOneProcTaskQueues();
+                FormTwoProcTaskQueues();
+                FormThreeProcTaskQueues();
+                FormFourProcTaskQueues();
+                FormFiveProcTaskQueues();
                
             queueMutex.ReleaseMutex();
 
@@ -931,7 +940,7 @@ namespace ProcessorsSimulator
         }
         private void SmartManageProcessors()
         {
-            
+            devideTasks();
         }
     }
 }

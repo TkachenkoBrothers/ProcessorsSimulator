@@ -110,6 +110,9 @@
             this.labelProcessedTasks = new System.Windows.Forms.Label();
             this.labelTotalOperations = new System.Windows.Forms.Label();
             this.groupBoxResults = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGenerator)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGeneratorIndicator)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxManagerIndicator)).BeginInit();
@@ -128,7 +131,7 @@
             this.pictureBoxGenerator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxGenerator.Location = new System.Drawing.Point(113, 12);
             this.pictureBoxGenerator.Name = "pictureBoxGenerator";
-            this.pictureBoxGenerator.Size = new System.Drawing.Size(198, 257);
+            this.pictureBoxGenerator.Size = new System.Drawing.Size(198, 275);
             this.pictureBoxGenerator.TabIndex = 0;
             this.pictureBoxGenerator.TabStop = false;
             // 
@@ -187,7 +190,7 @@
             // 
             this.labelGeneratorIndicator.AutoSize = true;
             this.labelGeneratorIndicator.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelGeneratorIndicator.Location = new System.Drawing.Point(186, 205);
+            this.labelGeneratorIndicator.Location = new System.Drawing.Point(184, 227);
             this.labelGeneratorIndicator.Name = "labelGeneratorIndicator";
             this.labelGeneratorIndicator.Size = new System.Drawing.Size(48, 13);
             this.labelGeneratorIndicator.TabIndex = 10;
@@ -197,7 +200,7 @@
             // 
             this.pictureBoxGeneratorIndicator.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pictureBoxGeneratorIndicator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxGeneratorIndicator.Location = new System.Drawing.Point(191, 218);
+            this.pictureBoxGeneratorIndicator.Location = new System.Drawing.Point(189, 242);
             this.pictureBoxGeneratorIndicator.Name = "pictureBoxGeneratorIndicator";
             this.pictureBoxGeneratorIndicator.Size = new System.Drawing.Size(37, 35);
             this.pictureBoxGeneratorIndicator.TabIndex = 11;
@@ -206,7 +209,7 @@
             // buttonGeneratorUpdate
             // 
             this.buttonGeneratorUpdate.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.buttonGeneratorUpdate.Location = new System.Drawing.Point(246, 230);
+            this.buttonGeneratorUpdate.Location = new System.Drawing.Point(246, 254);
             this.buttonGeneratorUpdate.Name = "buttonGeneratorUpdate";
             this.buttonGeneratorUpdate.Size = new System.Drawing.Size(48, 23);
             this.buttonGeneratorUpdate.TabIndex = 12;
@@ -216,7 +219,7 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(589, 230);
+            this.buttonStart.Location = new System.Drawing.Point(609, 254);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(75, 23);
             this.buttonStart.TabIndex = 13;
@@ -228,7 +231,7 @@
             // 
             this.pictureBoxManagerIndicator.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.pictureBoxManagerIndicator.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxManagerIndicator.Location = new System.Drawing.Point(413, 218);
+            this.pictureBoxManagerIndicator.Location = new System.Drawing.Point(566, 242);
             this.pictureBoxManagerIndicator.Name = "pictureBoxManagerIndicator";
             this.pictureBoxManagerIndicator.Size = new System.Drawing.Size(37, 35);
             this.pictureBoxManagerIndicator.TabIndex = 25;
@@ -238,7 +241,7 @@
             // 
             this.labelManagerIndicator.AutoSize = true;
             this.labelManagerIndicator.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelManagerIndicator.Location = new System.Drawing.Point(408, 205);
+            this.labelManagerIndicator.Location = new System.Drawing.Point(561, 227);
             this.labelManagerIndicator.Name = "labelManagerIndicator";
             this.labelManagerIndicator.Size = new System.Drawing.Size(48, 13);
             this.labelManagerIndicator.TabIndex = 24;
@@ -261,7 +264,7 @@
             this.pictureBoxManager.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxManager.Location = new System.Drawing.Point(391, 12);
             this.pictureBoxManager.Name = "pictureBoxManager";
-            this.pictureBoxManager.Size = new System.Drawing.Size(387, 257);
+            this.pictureBoxManager.Size = new System.Drawing.Size(387, 275);
             this.pictureBoxManager.TabIndex = 14;
             this.pictureBoxManager.TabStop = false;
             // 
@@ -430,9 +433,9 @@
             // vArrow1
             // 
             this.vArrow1.ArrowType = ArrowT.none;
-            this.vArrow1.Location = new System.Drawing.Point(582, 268);
+            this.vArrow1.Location = new System.Drawing.Point(582, 286);
             this.vArrow1.Name = "vArrow1";
-            this.vArrow1.Size = new System.Drawing.Size(10, 49);
+            this.vArrow1.Size = new System.Drawing.Size(10, 31);
             this.vArrow1.TabIndex = 42;
             this.vArrow1.WidthType = WidthT.default_width;
             // 
@@ -897,7 +900,7 @@
             // 
             // buttonStop
             // 
-            this.buttonStop.Location = new System.Drawing.Point(684, 230);
+            this.buttonStop.Location = new System.Drawing.Point(690, 254);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(75, 23);
             this.buttonStop.TabIndex = 89;
@@ -945,10 +948,48 @@
             this.groupBoxResults.Font = new System.Drawing.Font("Georgia", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBoxResults.Location = new System.Drawing.Point(864, 15);
             this.groupBoxResults.Name = "groupBoxResults";
-            this.groupBoxResults.Size = new System.Drawing.Size(200, 254);
+            this.groupBoxResults.Size = new System.Drawing.Size(200, 143);
             this.groupBoxResults.TabIndex = 90;
             this.groupBoxResults.TabStop = false;
             this.groupBoxResults.Text = "Results";
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.radioButton1.Location = new System.Drawing.Point(413, 208);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(48, 17);
+            this.radioButton1.TabIndex = 91;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "FIFO";
+            this.radioButton1.UseVisualStyleBackColor = false;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.radioButton2.Location = new System.Drawing.Point(413, 232);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(62, 17);
+            this.radioButton2.TabIndex = 92;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Second";
+            this.radioButton2.UseVisualStyleBackColor = false;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.radioButton3.Location = new System.Drawing.Point(413, 257);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(49, 17);
+            this.radioButton3.TabIndex = 93;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "Third";
+            this.radioButton3.UseVisualStyleBackColor = false;
             // 
             // Main
             // 
@@ -956,6 +997,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(1148, 631);
+            this.Controls.Add(this.radioButton3);
+            this.Controls.Add(this.radioButton2);
+            this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.groupBoxResults);
             this.Controls.Add(this.buttonStop);
             this.Controls.Add(this.buttonUpdateProcessor5);
@@ -1138,6 +1182,9 @@
         private System.Windows.Forms.Label labelProcessedTasks;
         private System.Windows.Forms.Label labelTotalOperations;
         private System.Windows.Forms.GroupBox groupBoxResults;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton3;
 
         
     }
