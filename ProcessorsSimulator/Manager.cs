@@ -20,6 +20,7 @@ namespace ProcessorsSimulator
             processors = new List<Processor>();
             processorsThreads = new Thread[5];
             CreateProcessors();
+            CreateProcessorsThreads();
             CreateGenerator();
             CreateGeneratorThread();
             //CreateManageProcessors();
@@ -90,9 +91,9 @@ namespace ProcessorsSimulator
             Debug.Print("List count = " + taskList.Count().ToString());
             taskList = new List<Task>(); // reload
             listMutex.ReleaseMutex();
-            processors = new List<Processor>();
+            //processors = new List<Processor>();
             processorsThreads = new Thread[5];
-            CreateProcessors(); 
+            CreateProcessorsThreads();
             CreateManageProcessors();
         }
         private void CreateGenerator()
@@ -118,8 +119,14 @@ namespace ProcessorsSimulator
                 Processor currentProc = new Processor();
                 currentProc.id = i;
                 processors.Add(currentProc);
-                Thread currentThread = new Thread(new ThreadStart(currentProc.DoWork));
-                currentThread.Name = "Processor" + (i + 1).ToString();
+            }
+        }
+        private void CreateProcessorsThreads()
+        {
+            for (int i = 0; i < processors.Count; i++)
+            {       
+                Thread currentThread = new Thread(new ThreadStart(processors[i].DoWork));
+                currentThread.Name = "Processor" + (i).ToString();
                 if (currentThread != null)
                     processorsThreads[i] = currentThread;
             }
@@ -129,7 +136,7 @@ namespace ProcessorsSimulator
             for (int i = 0; i < processorsThreads.Count(); i++)
             {
                 processorsThreads[i].Start();
-                Debug.Print("Processor" + (i + 1).ToString() + " thread started");
+                Debug.Print("Processor" + (i).ToString() + " thread started");
             }
         }
         private void AbortProcessors()
