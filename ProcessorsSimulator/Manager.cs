@@ -15,26 +15,26 @@ namespace ProcessorsSimulator
     {
         public Manager()
         {
-            taskQueue = new Queue<Task>();
+            taskList = new List<Task>();
             InitializeTaskQueues();
             processors = new List<Processor>();
             processorsThreads = new Thread[5];
             CreateProcessors();
             CreateGenerator();
             CreateGeneratorThread();
-            CreateManageProcessors();
+            //CreateManageProcessors();
             generator.WorkDone += new EventHandler(OnWorkDone);
             this.ProcessorsWorkDone += OnProcessorsWorkDone;
-            queueMutex = new Mutex();
+            listMutex = new Mutex();
             Debug.Print("Manager initialized");
             method = "";
         }
 
         
         private Queue<Task>[] devisionQueue;
-        public Mutex queueMutex;
+        public Mutex listMutex;
         public conditionManager condition;
-        public Queue<Task> taskQueue;
+        public List<Task> taskList; // using for second method where specific task need to be removed from the list of tasks (can`t remove specific task from queue)
         public Generator generator;
         public List<Processor> processors;
         public Thread generatorThread;
@@ -43,27 +43,27 @@ namespace ProcessorsSimulator
         private string method;
 
         public event EventHandler ProcessorsWorkDone;
-        public event EventHandler QueueModified;
+        public event EventHandler ListModified;
         public event EventHandler SendTaskToProcessor;
 
         public void Manage(string method)
         {
             this.method = method;
+            CreateManageProcessors();
             StartProcessors();
             StartGenerator();
-            if (this.method == "FIFO")
-                StartManageProcessors();
-            else if (this.method == "Second")
-                SmartManageProcessors();
+            StartManageProcessors();
+            
         }
         private void GetTask(Task task)
         {
-            queueMutex.WaitOne();
-            taskQueue.Enqueue(task);
-            Debug.Print(String.Format("Task (id={0}, operationsAmount={1}, supportedProcessors={2}) is added to queue", 
+            listMutex.WaitOne();
+            taskList.Add(task);
+            Debug.Print(String.Format("Task (id={0}, operationsAmount={1}, supportedProcessors={2}) is added to list", 
                                 task.id.ToString(), task.operationsAmont.ToString(), task.getSupportedProcessors()));
-            if (QueueModified != null) QueueModified(this, null);
-            queueMutex.ReleaseMutex();
+            if (method == "Second") devideTasks();
+            if (ListModified != null) ListModified(this, null);
+            listMutex.ReleaseMutex();
         }
 
         private void InitializeTaskQueues() 
@@ -78,18 +78,18 @@ namespace ProcessorsSimulator
             //AbortProcessors();
             Debug.Print("Generator work is done."); // must execute BEFORE Starting SmartManageProcessors or devideTasks
             CreateGeneratorThread(); // removes Start procedure for generator (100% stops calling taskQueue)
-            devideTasks();
+            //devideTasks();
         }
         //
         // reload threads when they finish work !!Attention: generator might finish his work before processors
         //
         private void OnProcessorsWorkDone(object sender, EventArgs e) 
         {
-            queueMutex.WaitOne();
+            listMutex.WaitOne();
             Debug.Print("Processors work is done.");
-            Debug.Print("Queue count = " + taskQueue.Count().ToString());
-            taskQueue = new Queue<Task>(); // reload
-            queueMutex.ReleaseMutex();
+            Debug.Print("List count = " + taskList.Count().ToString());
+            taskList = new List<Task>(); // reload
+            listMutex.ReleaseMutex();
             processors = new List<Processor>();
             processorsThreads = new Thread[5];
             CreateProcessors(); 
@@ -141,8 +141,16 @@ namespace ProcessorsSimulator
         }
         private void CreateManageProcessors()
         {
-            processorManager = new Thread(new
+            if (method == "FIFO")
+            {
+                processorManager = new Thread(new
                 ThreadStart(ManageProcessors));
+            }
+            else if (method == "Second")
+            {
+                processorManager = new Thread(new
+                ThreadStart(ManageProcessorsSecond));
+            }
             processorManager.Name = "Manager";
         }
         private void StartManageProcessors()
@@ -154,21 +162,21 @@ namespace ProcessorsSimulator
         {
             while(true)
             {
-                queueMutex.WaitOne();
-                if (taskQueue.Count != 0)
+                listMutex.WaitOne();
+                if (taskList.Count != 0)
                 {
                     Thread.Sleep(50); // extra time for displaying queue (only for those tasks, which is send to processors immediately)
                     Task currentTask = new Task();
-                    if (taskQueue.Count != 0)
-                        currentTask = taskQueue.Peek(); // peeks first elem in queue
+                    if (taskList.Count != 0)
+                        currentTask = taskList.First(); // peeks first elem from List
                     for(int i = 0; i < processors.Count; i++)
                     {
                         bool supported = currentTask.supportedProcessors.Contains(processors[i].id + 1);
                         if (supported)
-                            if (processors[i].condition == processor_condition.waitingForTask && taskQueue.Count != 0)
+                            if (processors[i].condition == processor_condition.waitingForTask && taskList.Count != 0)
                             {
-                                currentTask = taskQueue.Dequeue(); // return first elem and delete it
-                                if (QueueModified != null) QueueModified(this, null);
+                                taskList.RemoveAt(0); // delete first elem
+                                if (ListModified != null) ListModified(this, null);
                                 processors[i].currentTask = currentTask;
                                 Debug.Print(String.Format("Manager sends task (id={0}, operationsAmount={1}, supportedProcessors={2}) to Processor{3}",
                                                         currentTask.id.ToString(), currentTask.operationsAmont.ToString(), 
@@ -186,20 +194,64 @@ namespace ProcessorsSimulator
                             if (ProcessorsWorkDone != null)
                             {
                                 ProcessorsWorkDone(this, null);
-                                queueMutex.ReleaseMutex();
+                                listMutex.ReleaseMutex();
                                 break;
                             }
                             else Thread.Sleep(30); 
                     }         
                 }
-                queueMutex.ReleaseMutex();
+                listMutex.ReleaseMutex();
             }
         }
 
+        private void ManageProcessorsSecond()
+        {
+            while (true)
+            {
+                listMutex.WaitOne();
+                if (taskList.Count != 0)
+                {
+                    Task currentTask = new Task();
+                    for (int i = 0; i < devisionQueue.Count(); i++)
+                    {
+                        if (devisionQueue[i].Count != 0)
+                        {
+                            if (processors[i].condition == processor_condition.waitingForTask && taskList.Count != 0)
+                            {
+                                currentTask = devisionQueue[i].Dequeue();
+                                taskList.RemoveAll(x => x.id == currentTask.id); // removes current task from main list
+                                if (ListModified != null) ListModified(this, null);
+                                processors[i].currentTask = currentTask;
+                                Debug.Print(String.Format("Manager sends task (id={0}, operationsAmount={1}, supportedProcessors={2}) to Processor{3}",
+                                                        currentTask.id.ToString(), currentTask.operationsAmont.ToString(),
+                                                        currentTask.getSupportedProcessors(), (i + 1).ToString()));
+                                if (SendTaskToProcessor != null) SendTaskToProcessor(this, null);
+                                processors[i].condition = processor_condition.processing;
+                            }
+                        }
+                    }
+                }
+                else // queue is empty
+                {
+                    if (generator.currrentWorkingTime <= 0) // if generator stops working
+                    {
+                        if (processors.All(x => x.condition == processor_condition.waitingForTask)) // checking for all tasks processed
+                            if (ProcessorsWorkDone != null)
+                            {
+                                ProcessorsWorkDone(this, null);
+                                listMutex.ReleaseMutex();
+                                break;
+                            }
+                            else Thread.Sleep(30);
+                    }
+                }
+                listMutex.ReleaseMutex();
+            }
+        }
 
         private void FormOneProcTaskQueues()
         {
-            foreach (var i in taskQueue)
+            foreach (var i in taskList)
             {
                 if (i.supportedProcessors.Length == 1)
                 {
@@ -241,7 +293,7 @@ namespace ProcessorsSimulator
             List<Task> t34 = new List<Task>();
             List<Task> t35 = new List<Task>();
             List<Task> t45 = new List<Task>();
-            foreach (var i in taskQueue)
+            foreach (var i in taskList)
             {
                 if (i.supportedProcessors.Length == 2)
                 {
@@ -429,7 +481,7 @@ namespace ProcessorsSimulator
             List<Task> t245 = new List<Task>();
             List<Task> t145 = new List<Task>();
 
-            foreach (var i in taskQueue)
+            foreach (var i in taskList)
             {
                 if (i.supportedProcessors.Length == 3)
                 {
@@ -679,7 +731,7 @@ namespace ProcessorsSimulator
             List<Task> t1235 = new List<Task>();
             List<Task> t1245 = new List<Task>();
 
-            foreach (var i in taskQueue)
+            foreach (var i in taskList)
             {
                 if (i.supportedProcessors.Length == 4)
                 {
@@ -829,7 +881,7 @@ namespace ProcessorsSimulator
 
         private void FormFiveProcTaskQueues()
         {
-            foreach (var i in taskQueue)
+            foreach (var i in taskList)
             {
                 if (i.supportedProcessors.Length == 5)
                 {
@@ -850,7 +902,7 @@ namespace ProcessorsSimulator
                             devisionQueue[3].Enqueue(i);
                             break;
                         case 5:
-                            devisionQueue[3].Enqueue(i);
+                            devisionQueue[4].Enqueue(i);
                             break;
                         default:
                             break;
@@ -925,16 +977,18 @@ namespace ProcessorsSimulator
         private void devideTasks()
         {
           
-
-            queueMutex.WaitOne();
-               
+            listMutex.WaitOne();
+                foreach (var item in devisionQueue)
+                {
+                    item.Clear();
+                }
                 FormOneProcTaskQueues();
                 FormTwoProcTaskQueues();
                 FormThreeProcTaskQueues();
                 FormFourProcTaskQueues();
                 FormFiveProcTaskQueues();
                
-            queueMutex.ReleaseMutex();
+            listMutex.ReleaseMutex();
 
           
         }

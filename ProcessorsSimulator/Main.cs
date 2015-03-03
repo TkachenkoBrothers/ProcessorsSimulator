@@ -37,7 +37,7 @@ namespace ProcessorsSimulator
         {
             this.manager.generator.TaskGenerated += new Generator.TaskGeneratedHandler(BlinkWhenNewTaskGenerated);
             this.manager.ProcessorsWorkDone += new EventHandler(OnWorkDone); // enable to start again
-            this.manager.QueueModified += new EventHandler(OnQueueModified);
+            this.manager.ListModified += new EventHandler(OnQueueModified);
             this.manager.SendTaskToProcessor += new EventHandler(BlinkWhenTaskSended);
             this.maskedTextBoxSleepIndex.Text = manager.generator.indexSleepBetweenTask.ToString("0.0000");
             this.maskedTextBoxScopeFrom.Text = manager.generator.taskComplexityScope[0].ToString("00000");
@@ -231,16 +231,16 @@ namespace ProcessorsSimulator
         private void OnQueueModified(object sender, EventArgs e)
         {
             string res = "";
-            manager.queueMutex.WaitOne();
-            if (manager.taskQueue.Count() != 0)
+            manager.listMutex.WaitOne();
+            if (manager.taskList.Count() != 0)
             {
-                foreach (Task task in manager.taskQueue)
+                foreach (Task task in manager.taskList)
                 {
                     res += String.Format("{0}. Task (operationsAmount={1}, supportedProcessors={2}){3}", 
                                         task.id.ToString(), task.operationsAmont.ToString(), task.getSupportedProcessors(), "\n");
                 }
             }
-            manager.queueMutex.ReleaseMutex();
+            manager.listMutex.ReleaseMutex();
             this.Invoke((MethodInvoker)delegate { richTextBoxManagerQueue.Text = res; });
         }
         private void ResetProgressBarsValues()
@@ -409,7 +409,7 @@ namespace ProcessorsSimulator
 
         private void buttonStop_Click(object sender, EventArgs e)
         {
-            manager.taskQueue.Clear();
+            manager.taskList.Clear();
             manager.generator.currrentWorkingTime = -1; // forsly rise WorkDone event
             manager.processors.All(x => { x.condition = processor_condition.waitingForTask; return true; }); // forsly rise ProcessorsWorkDone event        
             //ResetProgressBarsValues();
