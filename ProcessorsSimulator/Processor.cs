@@ -16,7 +16,16 @@ namespace ProcessorsSimulator
         {
             power = 50; // default
             condition = processor_condition.waitingForTask;
-            currentTask = null; 
+            currentTask = null;
+            executedTasks = new List<Task>();
+        }
+
+        public Processor(int pow)
+        {
+            power = pow; // default
+            condition = processor_condition.waitingForTask;
+            currentTask = null;
+            executedTasks = new List<Task>();
         }
         public int id;
         public int power { get; set; } // n operations per milisecond
@@ -29,6 +38,7 @@ namespace ProcessorsSimulator
         public event NewProcessStartedHandler NewProcessStarted;
         public delegate void ProgressChangedHandler(int id, int progress);
         public event ProgressChangedHandler ProgressChanged;
+        private List<Task> executedTasks;
 
         public void DoWork()
         {
@@ -36,6 +46,10 @@ namespace ProcessorsSimulator
             {
                 if (condition == processor_condition.processing && currentTask != null)
                 {
+                    if (executedTasks.Contains(currentTask))
+                        Debug.Print("THIS TASK ALREADY EXECUTED!! WTF");
+                    else
+                        executedTasks.Add(currentTask);
                     double processingTime = currentTask.operationsAmont / power;
                     if (NewProcessStarted != null) NewProcessStarted(this.id, (int)Math.Round(processingTime, MidpointRounding.AwayFromZero) , currentTask, condition);
 

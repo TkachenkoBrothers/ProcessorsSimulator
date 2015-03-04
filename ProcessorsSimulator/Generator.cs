@@ -16,6 +16,13 @@ namespace ProcessorsSimulator
             taskComplexityScope = new int[2] { 3000, 10000 }; //default
             workingTime = 10000;
         }
+
+        public Generator(double sleepIndex ,  int Scope1, int Scope2, int _workingTime )
+        {
+            indexSleepBetweenTask = sleepIndex;
+            taskComplexityScope = new int[2] { Scope1, Scope2 };
+            workingTime = _workingTime;
+        }
         public double indexSleepBetweenTask { get; set; }
         public int workingTime { get; set; }
         public int currrentWorkingTime { get; set; }

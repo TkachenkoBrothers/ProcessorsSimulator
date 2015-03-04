@@ -210,19 +210,55 @@ namespace ProcessorsSimulator
             switch (id)
             {
                 case 0:
-                    this.Invoke((MethodInvoker)delegate { progressBarProcessor1.Value = progress; });
+                    try
+                    {
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor1.Value = progress; });
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor1.Value = 100; });
+                    }
+                    
                     break;
                 case 1:
-                    this.Invoke((MethodInvoker)delegate { progressBarProcessor2.Value = progress; });
+                    try
+                    {
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor2.Value = progress; });
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor2.Value = 100; });
+                    }
                     break;
                 case 2:
-                    this.Invoke((MethodInvoker)delegate { progressBarProcessor3.Value = progress; });
+                    try
+                    {
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor3.Value = progress; });
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor3.Value = 100; });
+                    }
                     break;
                 case 3:
-                    this.Invoke((MethodInvoker)delegate { progressBarProcessor4.Value = progress; });
+                    try
+                    {
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor4.Value = progress; });
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor4.Value = 100; });
+                    }
                     break;
                 case 4:
-                    this.Invoke((MethodInvoker)delegate { progressBarProcessor5.Value = progress; });
+                    try
+                    {
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor5.Value = progress; });
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor5.Value = 100; });
+                    }
                     break;
                 default:
                     break;
@@ -273,9 +309,29 @@ namespace ProcessorsSimulator
             });
 
 
-            this.manager.processors.All(p => { p.NewProcessStarted += OnNewProcessStarted; return true; }); // reload subscribes (because processors reloaded)
-            this.manager.processors.All(p => { p.ProgressChanged += OnProgressChanged; return true; });
-            this.manager.processors.All(p => { p.ProcessEnded += OnProcessEnded; return true; });
+            //this.manager.processors.All(p => { p.NewProcessStarted += OnNewProcessStarted; return true; }); // reload subscribes (because processors reloaded)
+            //this.manager.processors.All(p => { p.ProgressChanged += OnProgressChanged; return true; });
+            //this.manager.processors.All(p => { p.ProcessEnded += OnProcessEnded; return true; });
+            int pow1 = manager.processors[0].power;
+            int pow2 = manager.processors[1].power;
+            int pow3 = manager.processors[2].power;
+            int pow4 = manager.processors[3].power;
+            int pow5 = manager.processors[4].power;
+            double sleepInd = manager.generator.indexSleepBetweenTask;
+            int scope1 = manager.generator.taskComplexityScope[0];
+            int scope2 = manager.generator.taskComplexityScope[1];
+            int worktime = manager.generator.workingTime;
+            string met = manager.method;
+            //manager = new Manager(manager.processors[0].power, manager.processors[1].power, manager.processors[2].power, manager.processors[3].power, manager.processors[4].power, 
+            //    manager.generator.indexSleepBetweenTask, manager.generator.taskComplexityScope[0], manager.generator.taskComplexityScope[1], manager.generator.workingTime, manager.method);
+            manager = new Manager(pow1, pow2, pow3, pow4, pow5, sleepInd, scope1, scope2, worktime, met);
+            //manager = new Manager();
+            timeCalculator = new TimeCalculator();
+            method = "";
+            ManageInterface();
+            ProcessorsInterface();
+            totalProcesses = 0;
+            totalOperations = 0;  
         }
         private void BlinkWhenTaskSended(object sender, EventArgs e)
         {

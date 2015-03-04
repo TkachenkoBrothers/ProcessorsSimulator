@@ -31,6 +31,26 @@ namespace ProcessorsSimulator
             method = "";
         }
 
+        public Manager(int pow1, int pow2, int pow3, int pow4, int pow5, double sleepIndex, int Scope1, int Scope2, int workingTime, string _method)
+        {
+            method = _method;
+            taskList = new List<Task>();
+            InitializeTaskQueues();
+            processors = new List<Processor>(){new Processor(pow1), new Processor(pow2), new Processor(pow3),
+            new Processor(pow4), new Processor(pow5)};
+            processorsThreads = new Thread[5];
+            CreateProcessorsThreads();
+            CreateManageProcessors();
+            generator = new Generator(sleepIndex, Scope1, Scope2,  workingTime);
+            generator.TaskGenerated += new Generator.TaskGeneratedHandler(GetTask);
+            CreateGeneratorThread();
+            generator.WorkDone += new EventHandler(OnWorkDone);
+            this.ProcessorsWorkDone += OnProcessorsWorkDone;
+            listMutex = new Mutex();
+            Debug.Print("Manager initialized");
+            
+        }
+
         
         private Queue<Task>[] devisionQueue;
         public Mutex listMutex;
@@ -41,7 +61,7 @@ namespace ProcessorsSimulator
         public Thread generatorThread;
         private Thread processorManager;
         private Thread[] processorsThreads;
-        private string method;
+        public string method;
 
         public event EventHandler ProcessorsWorkDone;
         public event EventHandler ListModified;
@@ -91,10 +111,11 @@ namespace ProcessorsSimulator
             Debug.Print("List count = " + taskList.Count().ToString());
             taskList = new List<Task>(); // reload
             listMutex.ReleaseMutex();
-            //processors = new List<Processor>();
-            processorsThreads = new Thread[5];
-            CreateProcessorsThreads();
-            CreateManageProcessors();
+            //processors = new List<Processor>() { new Processor(processors[0].power), new Processor(processors[1].power), new Processor(processors[2].power),
+            //new Processor(processors[3].power), new Processor(processors[4].power)};
+            //processorsThreads = new Thread[5];
+            //CreateProcessorsThreads();
+            //CreateManageProcessors();
         }
         private void CreateGenerator()
         {
@@ -124,7 +145,9 @@ namespace ProcessorsSimulator
         private void CreateProcessorsThreads()
         {
             for (int i = 0; i < processors.Count; i++)
-            {       
+            {
+                //processors[i].condition = processor_condition.waitingForTask;
+                //processors[i].currentTask = null;
                 Thread currentThread = new Thread(new ThreadStart(processors[i].DoWork));
                 currentThread.Name = "Processor" + (i).ToString();
                 if (currentThread != null)
@@ -219,7 +242,7 @@ namespace ProcessorsSimulator
                 if (taskList.Count != 0)
                 {
                     Task currentTask = new Task();
-                    for (int i = 0; i < devisionQueue.Count(); i++)
+                    for (int i = 0; i < devisionQueue.Length; i++)
                     {
                         if (devisionQueue[i].Count != 0)
                         {
