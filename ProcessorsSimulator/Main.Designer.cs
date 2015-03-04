@@ -990,6 +990,7 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Third";
             this.radioButton3.UseVisualStyleBackColor = false;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // Main
             // 

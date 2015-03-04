@@ -83,6 +83,15 @@ namespace ProcessorsSimulator
             Debug.Print(String.Format("Task (id={0}, operationsAmount={1}, supportedProcessors={2}) is added to list", 
                                 task.id.ToString(), task.operationsAmont.ToString(), task.getSupportedProcessors()));
             if (method == "Second") devideTasks();
+            if (method == "Third")
+            {   
+                if (devisionQueue.Any(x => x.Count <= 3))
+                    devideTasks();
+                else
+                {
+
+                }
+            }
             if (ListModified != null) ListModified(this, null);
             listMutex.ReleaseMutex();
         }
@@ -176,7 +185,7 @@ namespace ProcessorsSimulator
                 processorManager = new Thread(new
                 ThreadStart(ManageProcessors));
             }
-            else if (method == "Second")
+            else if (method == "Second" || method == "Third")
             {
                 processorManager = new Thread(new
                 ThreadStart(ManageProcessorsSecond));
