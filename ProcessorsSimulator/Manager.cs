@@ -40,10 +40,10 @@ namespace ProcessorsSimulator
             new Processor(pow4), new Processor(pow5)};
             processorsThreads = new Thread[5];
             CreateProcessorsThreads();
-            CreateManageProcessors();
+            //CreateManageProcessors();
             generator = new Generator(sleepIndex, Scope1, Scope2,  workingTime);
-            generator.TaskGenerated += new Generator.TaskGeneratedHandler(GetTask);
             CreateGeneratorThread();
+            generator.TaskGenerated += new Generator.TaskGeneratedHandler(GetTask);
             generator.WorkDone += new EventHandler(OnWorkDone);
             this.ProcessorsWorkDone += OnProcessorsWorkDone;
             listMutex = new Mutex();
@@ -71,8 +71,8 @@ namespace ProcessorsSimulator
         {
             this.method = method;
             CreateManageProcessors();
-            StartProcessors();
             StartGenerator();
+            StartProcessors();
             StartManageProcessors();
             
         }

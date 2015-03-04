@@ -51,11 +51,12 @@ namespace ProcessorsSimulator
                     else
                         executedTasks.Add(currentTask);
                     double processingTime = currentTask.operationsAmont / power;
-                    if (NewProcessStarted != null) NewProcessStarted(this.id, (int)Math.Round(processingTime, MidpointRounding.AwayFromZero) , currentTask, condition);
+                    int maximumTime = (int)Math.Round(processingTime, MidpointRounding.ToEven);
+                    if (NewProcessStarted != null) NewProcessStarted(this.id, maximumTime, currentTask, condition);
 
                     Debug.Print("Processing task (operationsAmount=" + currentTask.operationsAmont.ToString() + 
                                 ", supportedProcessors=" + currentTask.getSupportedProcessors() + ")");
-                    for (int i = 0; i < processingTime; i += 1) // TODO
+                    for (int i = 0; i < maximumTime; i += 1) // TODO
                     {
                         if (ProgressChanged != null) ProgressChanged(this.id, i);
                         Thread.Sleep(20);

@@ -216,7 +216,7 @@ namespace ProcessorsSimulator
                     }
                     catch (ArgumentOutOfRangeException)
                     {
-                        this.Invoke((MethodInvoker)delegate { progressBarProcessor1.Value = 100; });
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor1.Value = progressBarProcessor1.Maximum; });
                     }
                     
                     break;
@@ -227,7 +227,7 @@ namespace ProcessorsSimulator
                     }
                     catch (ArgumentOutOfRangeException)
                     {
-                        this.Invoke((MethodInvoker)delegate { progressBarProcessor2.Value = 100; });
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor2.Value = progressBarProcessor2.Maximum; });
                     }
                     break;
                 case 2:
@@ -237,7 +237,7 @@ namespace ProcessorsSimulator
                     }
                     catch (ArgumentOutOfRangeException)
                     {
-                        this.Invoke((MethodInvoker)delegate { progressBarProcessor3.Value = 100; });
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor3.Value = progressBarProcessor3.Maximum; });
                     }
                     break;
                 case 3:
@@ -247,7 +247,7 @@ namespace ProcessorsSimulator
                     }
                     catch (ArgumentOutOfRangeException)
                     {
-                        this.Invoke((MethodInvoker)delegate { progressBarProcessor4.Value = 100; });
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor4.Value = progressBarProcessor4.Maximum; });
                     }
                     break;
                 case 4:
@@ -257,7 +257,7 @@ namespace ProcessorsSimulator
                     }
                     catch (ArgumentOutOfRangeException)
                     {
-                        this.Invoke((MethodInvoker)delegate { progressBarProcessor5.Value = 100; });
+                        this.Invoke((MethodInvoker)delegate { progressBarProcessor5.Value = progressBarProcessor5.Maximum; });
                     }
                     break;
                 default:
@@ -321,13 +321,24 @@ namespace ProcessorsSimulator
             int scope1 = manager.generator.taskComplexityScope[0];
             int scope2 = manager.generator.taskComplexityScope[1];
             int worktime = manager.generator.workingTime;
-            string met = manager.method;
+            //string met = manager.method;
             //manager = new Manager(manager.processors[0].power, manager.processors[1].power, manager.processors[2].power, manager.processors[3].power, manager.processors[4].power, 
             //    manager.generator.indexSleepBetweenTask, manager.generator.taskComplexityScope[0], manager.generator.taskComplexityScope[1], manager.generator.workingTime, manager.method);
-            manager = new Manager(pow1, pow2, pow3, pow4, pow5, sleepInd, scope1, scope2, worktime, met);
-            //manager = new Manager();
+           // manager = new Manager(pow1, pow2, pow3, pow4, pow5, sleepInd, scope1, scope2, worktime, method);
+            manager = new Manager();
+            manager.processors[0].power = pow1;
+            manager.processors[1].power = pow2;
+            manager.processors[2].power = pow3;
+            manager.processors[3].power = pow4;
+            manager.processors[4].power = pow5;
+            manager.generator.indexSleepBetweenTask = sleepInd;
+            manager.generator.taskComplexityScope[0] = scope1;
+            manager.generator.taskComplexityScope[1] = scope2;
+            manager.generator.workingTime = worktime;
+            manager.method = method;
+
             timeCalculator = new TimeCalculator();
-            method = "";
+           // method = "";
             ManageInterface();
             ProcessorsInterface();
             totalProcesses = 0;

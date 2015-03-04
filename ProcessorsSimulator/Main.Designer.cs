@@ -294,7 +294,7 @@
             // maskedTextBoxSleepIndex
             // 
             this.maskedTextBoxSleepIndex.Location = new System.Drawing.Point(189, 54);
-            this.maskedTextBoxSleepIndex.Mask = "0.0000";
+            this.maskedTextBoxSleepIndex.Mask = "00000";
             this.maskedTextBoxSleepIndex.Name = "maskedTextBoxSleepIndex";
             this.maskedTextBoxSleepIndex.Size = new System.Drawing.Size(42, 20);
             this.maskedTextBoxSleepIndex.TabIndex = 28;
