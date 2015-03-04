@@ -84,13 +84,17 @@ namespace ProcessorsSimulator
                                 task.id.ToString(), task.operationsAmont.ToString(), task.getSupportedProcessors()));
             if (method == "Second") devideTasks();
             if (method == "Third")
-            {   
-                if (devisionQueue.Any(x => x.Count <= 3))
+            {
+                if (devisionQueue.Any(x => x.Count <= 3) || devisionQueue.All(x => x.Count <= 3))
                     devideTasks();
                 else
                 {
 
                 }
+            }
+            if (generator.currrentWorkingTime == 0)
+            {
+                devideTasks();
             }
             if (ListModified != null) ListModified(this, null);
             listMutex.ReleaseMutex();
