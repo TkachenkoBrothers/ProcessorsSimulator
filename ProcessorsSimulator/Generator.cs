@@ -12,18 +12,18 @@ namespace ProcessorsSimulator
     {
         public Generator()
         {
-            indexSleepBetweenTask = 0.05; //default, should be in range 0..1
+            sleepTime = 200; //default
             taskComplexityScope = new int[2] { 3000, 10000 }; //default
             workingTime = 10000;
         }
 
-        public Generator(double sleepIndex ,  int Scope1, int Scope2, int _workingTime )
+        public Generator(int tasksAmount ,  int Scope1, int Scope2, int _workingTime )
         {
-            indexSleepBetweenTask = sleepIndex;
+            tasksAmount = tasksAmount;
             taskComplexityScope = new int[2] { Scope1, Scope2 };
             workingTime = _workingTime;
         }
-        public double indexSleepBetweenTask { get; set; }
+        public int sleepTime { get; set; }
         public int workingTime { get; set; }
         public int currrentWorkingTime { get; set; }
         public int[] taskComplexityScope { get; set; }
@@ -33,7 +33,6 @@ namespace ProcessorsSimulator
         public void GenerateTasks()
         {
             currrentWorkingTime = workingTime;
-            int sleepTime = (int) Math.Round(workingTime * indexSleepBetweenTask, MidpointRounding.AwayFromZero);
             Random random = new Random();
             int id = 0;
 

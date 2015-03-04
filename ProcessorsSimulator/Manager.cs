@@ -31,7 +31,7 @@ namespace ProcessorsSimulator
             method = "";
         }
 
-        public Manager(int pow1, int pow2, int pow3, int pow4, int pow5, double sleepIndex, int Scope1, int Scope2, int workingTime, string _method)
+        public Manager(int pow1, int pow2, int pow3, int pow4, int pow5, int sleepTime, int Scope1, int Scope2, int workingTime, string _method)
         {
             method = _method;
             taskList = new List<Task>();
@@ -41,7 +41,7 @@ namespace ProcessorsSimulator
             processorsThreads = new Thread[5];
             CreateProcessorsThreads();
             //CreateManageProcessors();
-            generator = new Generator(sleepIndex, Scope1, Scope2,  workingTime);
+            generator = new Generator(sleepTime, Scope1, Scope2,  workingTime);
             CreateGeneratorThread();
             generator.TaskGenerated += new Generator.TaskGeneratedHandler(GetTask);
             generator.WorkDone += new EventHandler(OnWorkDone);

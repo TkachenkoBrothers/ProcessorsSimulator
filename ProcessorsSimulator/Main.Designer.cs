@@ -30,7 +30,7 @@
         {
             this.pictureBoxGenerator = new System.Windows.Forms.PictureBox();
             this.labelGenerator = new System.Windows.Forms.Label();
-            this.labelSleepIndex = new System.Windows.Forms.Label();
+            this.labelSleepTime = new System.Windows.Forms.Label();
             this.labelScopeFrom = new System.Windows.Forms.Label();
             this.labelScopeTo = new System.Windows.Forms.Label();
             this.labelWorkingTime = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             this.pictureBoxManager = new System.Windows.Forms.PictureBox();
             this.richTextBoxManagerQueue = new System.Windows.Forms.RichTextBox();
             this.hArrow1 = new PriborControlLibrary.HArrow();
-            this.maskedTextBoxSleepIndex = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxSleepTime = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxScopeFrom = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxScopeTo = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBoxWorkingTime = new System.Windows.Forms.MaskedTextBox();
@@ -146,15 +146,15 @@
             this.labelGenerator.TabIndex = 1;
             this.labelGenerator.Text = "Generator";
             // 
-            // labelSleepIndex
+            // labelSleepTime
             // 
-            this.labelSleepIndex.AutoSize = true;
-            this.labelSleepIndex.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.labelSleepIndex.Location = new System.Drawing.Point(126, 57);
-            this.labelSleepIndex.Name = "labelSleepIndex";
-            this.labelSleepIndex.Size = new System.Drawing.Size(62, 13);
-            this.labelSleepIndex.TabIndex = 2;
-            this.labelSleepIndex.Text = "Sleep index";
+            this.labelSleepTime.AutoSize = true;
+            this.labelSleepTime.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.labelSleepTime.Location = new System.Drawing.Point(126, 57);
+            this.labelSleepTime.Name = "labelSleepTime";
+            this.labelSleepTime.Size = new System.Drawing.Size(56, 13);
+            this.labelSleepTime.TabIndex = 2;
+            this.labelSleepTime.Text = "Sleep time";
             // 
             // labelScopeFrom
             // 
@@ -291,14 +291,14 @@
             this.hArrow1.TabIndex = 27;
             this.hArrow1.WidthType = WidthT.default_width;
             // 
-            // maskedTextBoxSleepIndex
+            // maskedTextBoxSleepTime
             // 
-            this.maskedTextBoxSleepIndex.Location = new System.Drawing.Point(189, 54);
-            this.maskedTextBoxSleepIndex.Mask = "00000";
-            this.maskedTextBoxSleepIndex.Name = "maskedTextBoxSleepIndex";
-            this.maskedTextBoxSleepIndex.Size = new System.Drawing.Size(42, 20);
-            this.maskedTextBoxSleepIndex.TabIndex = 28;
-            this.maskedTextBoxSleepIndex.Click += new System.EventHandler(this.maskedTextBoxSleepIndex_Click);
+            this.maskedTextBoxSleepTime.Location = new System.Drawing.Point(189, 54);
+            this.maskedTextBoxSleepTime.Mask = "00000";
+            this.maskedTextBoxSleepTime.Name = "maskedTextBoxSleepTime";
+            this.maskedTextBoxSleepTime.Size = new System.Drawing.Size(42, 20);
+            this.maskedTextBoxSleepTime.TabIndex = 28;
+            this.maskedTextBoxSleepTime.Click += new System.EventHandler(this.maskedTextBoxSleepTime_Click);
             // 
             // maskedTextBoxScopeFrom
             // 
@@ -1062,7 +1062,7 @@
             this.Controls.Add(this.maskedTextBoxWorkingTime);
             this.Controls.Add(this.maskedTextBoxScopeTo);
             this.Controls.Add(this.maskedTextBoxScopeFrom);
-            this.Controls.Add(this.maskedTextBoxSleepIndex);
+            this.Controls.Add(this.maskedTextBoxSleepTime);
             this.Controls.Add(this.hArrow1);
             this.Controls.Add(this.buttonStart);
             this.Controls.Add(this.richTextBoxManagerQueue);
@@ -1076,7 +1076,7 @@
             this.Controls.Add(this.labelWorkingTime);
             this.Controls.Add(this.labelScopeTo);
             this.Controls.Add(this.labelScopeFrom);
-            this.Controls.Add(this.labelSleepIndex);
+            this.Controls.Add(this.labelSleepTime);
             this.Controls.Add(this.labelGenerator);
             this.Controls.Add(this.pictureBoxGenerator);
             this.Name = "Main";
@@ -1102,7 +1102,7 @@
 
         private System.Windows.Forms.PictureBox pictureBoxGenerator;
         private System.Windows.Forms.Label labelGenerator;
-        private System.Windows.Forms.Label labelSleepIndex;
+        private System.Windows.Forms.Label labelSleepTime;
         private System.Windows.Forms.Label labelScopeFrom;
         private System.Windows.Forms.Label labelScopeTo;
         private System.Windows.Forms.Label labelWorkingTime;
@@ -1116,7 +1116,7 @@
         private System.Windows.Forms.PictureBox pictureBoxManager;
         private System.Windows.Forms.RichTextBox richTextBoxManagerQueue;
         private PriborControlLibrary.HArrow hArrow1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxSleepIndex;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxSleepTime;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxScopeFrom;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxScopeTo;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxWorkingTime;

@@ -39,7 +39,7 @@ namespace ProcessorsSimulator
             this.manager.ProcessorsWorkDone += new EventHandler(OnWorkDone); // enable to start again
             this.manager.ListModified += new EventHandler(OnQueueModified);
             this.manager.SendTaskToProcessor += new EventHandler(BlinkWhenTaskSended);
-            this.maskedTextBoxSleepIndex.Text = manager.generator.indexSleepBetweenTask.ToString("0.0000");
+            this.maskedTextBoxSleepTime.Text = manager.generator.sleepTime.ToString("00000");
             this.maskedTextBoxScopeFrom.Text = manager.generator.taskComplexityScope[0].ToString("00000");
             this.maskedTextBoxScopeTo.Text = manager.generator.taskComplexityScope[1].ToString("00000");
             this.maskedTextBoxWorkingTime.Text = manager.generator.workingTime.ToString("0000000");
@@ -317,7 +317,7 @@ namespace ProcessorsSimulator
             int pow3 = manager.processors[2].power;
             int pow4 = manager.processors[3].power;
             int pow5 = manager.processors[4].power;
-            double sleepInd = manager.generator.indexSleepBetweenTask;
+            int sleepTime = manager.generator.sleepTime;
             int scope1 = manager.generator.taskComplexityScope[0];
             int scope2 = manager.generator.taskComplexityScope[1];
             int worktime = manager.generator.workingTime;
@@ -331,7 +331,7 @@ namespace ProcessorsSimulator
             manager.processors[2].power = pow3;
             manager.processors[3].power = pow4;
             manager.processors[4].power = pow5;
-            manager.generator.indexSleepBetweenTask = sleepInd;
+            manager.generator.sleepTime = sleepTime;
             manager.generator.taskComplexityScope[0] = scope1;
             manager.generator.taskComplexityScope[1] = scope2;
             manager.generator.workingTime = worktime;
@@ -360,13 +360,13 @@ namespace ProcessorsSimulator
         }
         private void buttonGeneratorUpdate_Click(object sender, EventArgs e)
         {
-            double sleepIndex = 0;
+            int sleepTime = 0;
             int complexityScope0 = 0;
             int complexityScope1 = 0;
             int workingTime = 0;
             try
             {
-                sleepIndex = double.Parse(maskedTextBoxSleepIndex.Text);
+                sleepTime = int.Parse(maskedTextBoxSleepTime.Text);
                 complexityScope0 = int.Parse(maskedTextBoxScopeFrom.Text);
                 complexityScope1 = int.Parse(maskedTextBoxScopeTo.Text);
                 workingTime = int.Parse(maskedTextBoxWorkingTime.Text);
@@ -377,13 +377,13 @@ namespace ProcessorsSimulator
                 MessageBox.Show("Wrong arguments");
             }
 
-            if (sleepIndex > 0 && sleepIndex < 1)
+            if (sleepTime > 0 && sleepTime < workingTime)
             {
-                manager.generator.indexSleepBetweenTask = sleepIndex;
+                manager.generator.sleepTime = sleepTime;
             }
             else
             {
-                System.Windows.Forms.MessageBox.Show("Sleep Index must be from 0 to 1");
+                System.Windows.Forms.MessageBox.Show("Tasks amount must be in range 0 to workingTime");
                 return;
             }
             if (complexityScope0 > 0 && complexityScope1 > 0 && workingTime > 0)
@@ -408,7 +408,7 @@ namespace ProcessorsSimulator
             }
 
             buttonGeneratorUpdate.BackColor = Color.FromName("InactiveCaption");
-            this.maskedTextBoxSleepIndex.Text = manager.generator.indexSleepBetweenTask.ToString("0.0000");
+            this.maskedTextBoxSleepTime.Text = manager.generator.sleepTime.ToString("00000");
             this.maskedTextBoxScopeFrom.Text = manager.generator.taskComplexityScope[0].ToString("00000");
             this.maskedTextBoxScopeTo.Text = manager.generator.taskComplexityScope[1].ToString("00000");
             this.maskedTextBoxWorkingTime.Text = manager.generator.workingTime.ToString("0000000");
@@ -484,9 +484,9 @@ namespace ProcessorsSimulator
             timeCalculator.SetSecondTime();
         }
 
-      
 
-        private void maskedTextBoxSleepIndex_Click(object sender, EventArgs e)
+
+        private void maskedTextBoxSleepTime_Click(object sender, EventArgs e)
         {
             buttonGeneratorUpdate.BackColor = Color.FromName("MenuHighlight");
         }
